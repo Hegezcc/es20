@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800&display=swap" rel="stylesheet">
+    <script src="main.js"></script>
+    <title>Eventbrite</title>
+</head>
+<body class="">
+    <div id="top-header-container">
+        <header id="top-header">
+            <svg id="brand">
+                <use xlink:href="sprite.svg#shape-icon-logo"></use>
+            </svg>
+            <span class="search__mobile"><svg><use xlink:href="sprite.svg#shape-icon-search"></use></svg></span>
+            <label for="search_box" id="search">
+                <form action="#" method="POST">
+                    <svg class="search__icon"><use xlink:href="sprite.svg#shape-icon-search"></use></svg>
+                    <input id="search_box" type="text" placeholder="Search events">
+                </form>
+            </label>
+            <nav class="links">
+                <span class="links__mobile"><svg><use xlink:href="sprite.svg#shape-icon-threedots"></use></svg></span>
+                <ul class="megamenu">
+                    <li>
+                    <span>
+                        Organize
+                        <svg>
+                            <use xlink:href="sprite.svg#shape-icon-chevrondown"></use>
+                        </svg>
+                    </span>
+                        <ul class="submenu">
+                            <li><a href="#">Overview</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                    <span>
+                        Help
+                        <svg>
+                            <use xlink:href="sprite.svg#shape-icon-chevrondown"></use>
+                        </svg>
+                    </span>
+                        <ul class="submenu">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">More resources etc.</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="emphasize">Create Event</a></li>
+                </ul>
+            </nav>
+            <a class="login" href="#">Sign In</a>
+        </header>
+    </div>
+    <main>
+        <section id="frontpage">
+            <div class="heading">
+                <div class="container">
+                    <h2>Made for</h2>
+                    <h1>those who do</h1>
+                    <a href="#event-categories">Browse events <svg><use xlink:href="sprite.svg#shape-icon-arrowright"></use></svg></a>
+                </div>
+            </div>
+            <figure>
+                <img src="https://source.unsplash.com/600x360/?event" alt="Sample event">
+                <figcaption>Sample event</figcaption>
+            </figure>
+        </section>
+        <section id="populars">
+            <h3><span>Popular in </span><input type="text" value="Helsinki"></h3>
+        </section>
+        <div id="header-anchor"></div>
+        <nav id="categories-header-container">
+            <ul id="event-categories">
+                <li class="active"><a href="#">All</a></li>
+                <li><a href="#">For you</a></li>
+                <li><a href="#">This weekend</a></li>
+                <li><a href="#">Free</a></li>
+                <li><a href="#">Music</a></li>
+                <li><a href="#">Food & Drink</a></li>
+                <li><a href="#">Charity & Causes</a></li>
+            </ul>
+        </nav>
+        <section class="event-cards">
+            <h3>Events in Helsinki</h3>
+            <ul class="event-container">
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #1</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                        <ul class="event__image__tags">
+                            <li>Free</li>
+                        </ul>
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #2</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                        <ul class="event__image__tags">
+                            <li>Free</li>
+                        </ul>
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #3 with long title to break the system, also just some more text</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="advert">
+                    <h3>Tell us what you love</h3>
+                    <p>We'll find event recommendations just for you</p>
+                    <button class="advert__button">Get started</button>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #4</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #5</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                        <ul class="event__image__tags">
+                            <li>Free</li>
+                        </ul>
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #6</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                        <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #7</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <hr>
+        <section class="event-cards">
+            <h3>More events</h3>
+            <ul class="event-container">
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #1</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #2</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #3</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                        <ul class="event__image__tags">
+                            <li>Free</li>
+                        </ul>
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #4</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                        <ul class="event__image__tags">
+                            <li>Free</li>
+                        </ul>
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #5</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+                <li class="event">
+                    <figure class="event__image" style="background-image: url(https://source.unsplash.com/featured/?event)">
+                    </figure>
+                    <div class="event__info">
+                        <p class="event__time">Thu, March 12, 11:00 AM</p>
+                        <h4 class="event__name">Sample event #6</h4>
+                        <p class="event__place">Business College Helsinki, Helsinki</p>
+                    </div>
+                    <ul class="event__buttons">
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-add"></use></svg></a></li>
+                            <li><a href="#"><svg><use xlink:href="sprite.svg#shape-icon-heart"></use></svg></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="seemore">See more</button>
+        </section>
+    </main>
+    <footer>
+        <section class="links">
+            <article>
+                <h3>Heading #1</h3>
+                <ul>
+                    <li><a href="#">Link #1</a></li>
+                    <li><a href="#">Link #2</a></li>
+                    <li><a href="#">Link #3</a></li>
+                    <li><a href="#">Link #4</a></li>
+                    <li><a href="#">Link #5</a></li>
+                </ul>
+            </article>
+            <article>
+                <h3>Heading #2</h3>
+                <ul>
+                    <li><a href="#">Link #6</a></li>
+                    <li><a href="#">Link #7</a></li>
+                    <li><a href="#">Link #8</a></li>
+                    <li><a href="#">Link #9</a></li>
+                    <li><a href="#">Link #10</a></li>
+                </ul>
+            </article>
+            <article>
+                <h3>Heading #3</h3>
+                <ul>
+                    <li><a href="#">Link #11</a></li>
+                    <li><a href="#">Link #12</a></li>
+                    <li><a href="#">Link #13</a></li>
+                    <li><a href="#">Link #14</a></li>
+                    <li><a href="#">Link #15</a></li>
+                </ul>
+            </article>
+            <article>
+                <h3>Heading #4</h3>
+                <ul>
+                    <li><a href="#">Link #16</a></li>
+                    <li><a href="#">Link #17</a></li>
+                    <li><a href="#">Link #18</a></li>
+                    <li><a href="#">Link #19</a></li>
+                    <li><a href="#">Link #20</a></li>
+                </ul>
+            </article>
+        </section>
+        <aside>
+            <p class="copyright">© 2020 Heikki Miinalainen</p>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Licensing</a></li>
+                <li><a href="#">More</a></li>
+                <li><a href="#">Etc</a></li>
+            </ul>
+        </aside>
+    </footer>
+</body>
+</html>
