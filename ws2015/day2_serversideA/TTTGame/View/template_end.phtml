@@ -1,0 +1,12 @@
+</article>
+</section>
+<?php if (!empty($debugmsg)): ?>
+<pre class="messages">
+<?php foreach ($debugmsg as $msg): ?>
+<?= htmlspecialchars($msg) ?><br>
+<?php endforeach; ?>
+</pre>
+<?php endif; ?>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

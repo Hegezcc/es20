@@ -9,28 +9,35 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3 class="panel-title">Booking Contact</h3></div>
                     <div class="panel-body">
+                        @if($errors->count())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Name *</label>
                             <div class="col-sm-4">
-                                <input type="text" id="name" name="name" required="required" class="form-control">
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="organization" class="col-sm-3 control-label">Organization °</label>
                             <div class="col-sm-4">
-                                <input type="text" id="organization" name="organization" class="form-control">
+                                <input type="text" id="organization" name="organization" value="{{ old('organization') }}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">Email *</label>
                             <div class="col-sm-4">
-                                <input type="text" id="email" name="email" required="required" class="form-control">
+                                <input type="text" id="email" name="email" value="{{ old('email') }}" required="required" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="col-sm-3 control-label">Phone</label>
                             <div class="col-sm-4">
-                                <input type="text" id="phone" name="phone" class="form-control">
+                                <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -38,14 +45,14 @@
                             <div class="col-sm-4">
                                 <select id="country" name="country" required="required" class="form-control">
                                     <option value="">choose a country</option>
-                                    <option value="AU">AU - Australia</option>
-                                    <option value="BR">BR - Brasil</option>
-                                    <option value="CA">CA - Canada</option>
-                                    <option value="CH">CH - Switzerland</option>
-                                    <option value="CN">CN - China</option>
-                                    <option value="DE">DE - Germany</option>
-                                    <option value="FR">FR - France</option>
-                                    <option value="IN">IN - India</option>
+                                    <option value="AU"{{ old('country') === 'AU' ? ' selected' : '' }}>AU - Australia</option>
+                                    <option value="BR"{{ old('country') === 'BR' ? ' selected' : '' }}>BR - Brasil</option>
+                                    <option value="CA"{{ old('country') === 'CA' ? ' selected' : '' }}>CA - Canada</option>
+                                    <option value="CH"{{ old('country') === 'CH' ? ' selected' : '' }}>CH - Switzerland</option>
+                                    <option value="CN"{{ old('country') === 'CN' ? ' selected' : '' }}>CN - China</option>
+                                    <option value="DE"{{ old('country') === 'DE' ? ' selected' : '' }}>DE - Germany</option>
+                                    <option value="FR"{{ old('country') === 'FR' ? ' selected' : '' }}>FR - France</option>
+                                    <option value="IN"{{ old('country') === 'IN' ? ' selected' : '' }}>IN - India</option>
                                 </select>
                             </div>
                         </div>
@@ -82,7 +89,7 @@
                         </ul>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="agree" name="agree"> I agree to the guest regulations and confirm that myself and any guests (group booking) will respect all of the guest regulations
+                                <input type="checkbox" id="agree" name="agree"{{ old('agree') ? ' checked':'' }}> I agree to the guest regulations and confirm that myself and any guests (group booking) will respect all of the guest regulations
                             </label>
                         </div>
                     </div>

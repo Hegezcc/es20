@@ -17,7 +17,6 @@ class CreateDiningExperiencesTable extends Migration
         Schema::create('dining_experiences', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('time');
             $table->text('description');
         });
 

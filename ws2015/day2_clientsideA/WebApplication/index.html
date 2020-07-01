@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<title>Custom Puzzle - WorldSkills 2015</title>
+</head>
+<body>
+	<main id="app">
+		<canvas id="work" width="500" height="500"></canvas>
+		<!-- START -->
+		<div id="start" v-if="saved.state === 'starting'">
+			<div class="box">
+				<h2>Welcome do Custom Puzzle!</h2>
+				<p>This game consists in you make your puzzle game</p>
+				<form action="#" @submit.prevent="startGame" method="post">
+					<div class="group">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" v-model="saved.name" required />
+					</div>
+					<div class="group">
+						<label for="difficult">Difficult</label>
+						<select type="text" name="difficult" id="difficult" v-model="saved.rowSize">
+							<option value="2">EASY</option>
+							<option value="3">MEDIUM</option>
+							<option value="4">HARD</option>
+						</select>
+					</div>
+					<!-- DROP -->
+					<div class="group" id="drop">
+						<div class="preview" :style="{ backgroundImage: 'url(' + imageDataBlob + ')' }">
+						</div>
+						<input type="file" accept="image/jpeg" :required="saved.imageData === null" @change="loadImage($event)">
+						<p>{{ showFileName }}</p>
+					</div><!-- END DROP -->
+					<div class="group">
+						<button type="submit" name="submit">START</button>
+					</div>
+				</form>
+			</div>
+		</div><!-- END START -->
+
+		<!-- END -->
+		<div id="end" :class="[ saved.state === 'results' ? '' : 'hide' ]">
+			<div class="box">
+				<h3>Congratulations! You have solved the puzzle!</h3>
+				<p>You did it!</p>
+				<table v-if="highScores">
+					<thead>
+					<tr>
+						<th>POSITION</th>
+						<th>LEVEL</th>
+						<th>NAME</th>
+						<th>TIME</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr v-for="score of highScores" :key="score.id">
+						<td>{{ score.position }}</td>
+						<td>{{ score.level }}</td>
+						<td>{{ score.name }}</td>
+						<td>{{ score.time | time }}</td>
+					</tr>
+					</tbody>
+				</table>
+				<p id="highscores-loading" v-else><em>Loading highscores...</em></p>
+				<button class="btn btn-restart" @click.prevent="reset">RESTART APPLICATION</button>
+			</div>
+		</div><!-- END END -->
+
+		<!-- GAMECONTAINER -->
+		<div id="gameContainer" v-if="['game', 'paused'].includes(saved.state)">
+			<div class="container">
+
+
+				<!-- PLAYERNAME -->
+				<span id="playername">{{ saved.name }}</span>
+				<!-- TIMER -->
+				<div id="timer">
+					<span>{{ saved.gameClock | time }}</span>
+				</div>
+
+				<div id="puzzleContainer">
+					<div id="pauseRibbon" v-if="saved.state === 'paused'">
+						<h1>Paused</h1>
+					</div>
+					<!-- PUZZLE -->
+					<div id="puzzle" class="piece-container">
+						<vpiece v-for="piece of saved.gameState"
+								:key="piece.id"
+								:x="(piece.id-1) % saved.rowSize"
+								:y="Math.floor((piece.id-1) / saved.rowSize)"
+								:row-size="saved.rowSize"
+								:emphasis="piece.emphasis"
+								:base-img="imageDataBlob"
+								:rotation="piece.rotation"
+								:id="piece.id"
+								@click="processStartingPiece"
+						><span v-if="debug">{{ piece.id }}</span></vpiece>
+					</div>
+
+					<div id="puzzleDestination" class="piece-container">
+						<vpiece v-for="piece of saved.gameStateFinal"
+								:key="piece.id"
+								:x="(piece.id-1) % saved.rowSize"
+								:y="Math.floor((piece.id-1) / saved.rowSize)"
+								:row-size="saved.rowSize"
+								:emphasis="piece.emphasis"
+								:base-img="imageDataBlob"
+								:rotation="0"
+								:id="piece.id"
+								@drop="processPieceDrop"
+						><span v-if="debug">{{ piece.id }}</span></vpiece>
+					</div>
+				</div>
+
+				<div class="buttons">
+					<button class="btn btn-pause" @click.prevent="pause">{{ pausedButton }}</button>
+					<button class="btn btn-restart" @click.prevent="reset">RESTART</button>
+				</div>
+			</div>
+		</div><!-- END GAMECONTAINER -->
+	</main>
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src='js/script.js'></script>
+
+</body>
+</html>

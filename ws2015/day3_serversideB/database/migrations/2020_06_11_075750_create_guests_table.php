@@ -18,6 +18,7 @@ class CreateGuestsTable extends Migration
             $table->timestamps();
             $table->string('name')->nullable();
             $table->string('country');
+            $table->string('status')->default('requested');
             $table->unsignedBigInteger('reservation_id');
             $table->unsignedBigInteger('dining_option_id');
 

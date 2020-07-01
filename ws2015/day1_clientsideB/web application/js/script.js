@@ -2,16 +2,30 @@ let running = false;
 let jumping = false;
 let animationObj;
 
+const points = $('#points>.point');
+const panels = $('#panels>.panel');
+
+let nextPointPosition;
+let nextPointDistance;
+
 const runwayLength = $('#runway1').width() - 880;
 
 let runway = 2;
 const runwayMargins = {
     1: 7,
-    2: -18,
-    3: -45
+    2: -15,
+    3: -40
 }
 
 const obstacles = {};
+
+function calculateNextPointDistance(position) {
+    if (position >= points.length) {
+        nextPointDistance = null;
+    } else {
+        nextPointDistance = points.get(position).offsetLeft;
+    }
+}
 
 function initObstacles() {
     $('.runway .obstacle').remove();
@@ -31,8 +45,6 @@ function initObstacles() {
             })
 
             $(this).append(obstacle);
-
-            //console.log(obstacle);
         }
     })
 }
@@ -41,25 +53,30 @@ function changeRunway(direction) {
     const toRunway = runway + direction;
 
     if (toRunway in runwayMargins && !jumping && running) {
-        //console.log(toRunway);
         runway = toRunway;
-        $('#runner').css({
-            marginBottom: runwayMargins[runway] + 'px',
-        });
-        $('#runnerImage').css({
-            transform: `scale(${1 + (runway - 2) * 0.2})`
-        })
+
+        makeRunwayChange(runway);
     }
+}
+
+function makeRunwayChange(runway) {
+    $('#runner').css({
+        marginBottom: runwayMargins[runway] + 'px',
+    });
+    $('#runnerImage').css({
+        transform: `scale(${1 + (runway - 2) * 0.2})`
+    })
 }
 
 function startRun() {
     running = true;
-
     $('#start,#end').addClass('hide');
 
+    $('#pyre_fired').addClass('hide');
+    $('#pyre_notfired').removeClass('hide');
     const runner = $('#runner');
-    runner.addClass('running');
 
+    runner.addClass('running').removeClass('standing');
     runner.css({
         marginLeft: 0,
         marginBottom: 0
@@ -68,6 +85,12 @@ function startRun() {
     $('#game').css({
         marginLeft: 0
     });
+
+    nextPointPosition = 0;
+    calculateNextPointDistance(nextPointPosition);
+
+    points.removeClass('show');
+    panels.removeClass('show');
 
     runner.animate({
         marginLeft: runwayLength + 'px'
@@ -87,6 +110,16 @@ function startRun() {
                     }
                 }
             }
+
+            if (nextPointDistance !== null && progress > nextPointDistance - 500) {
+                const point = $(points.get(nextPointPosition));
+                const panel = $(panels.get(nextPointPosition));
+
+                point.addClass('show');
+                panel.addClass('show');
+
+                calculateNextPointDistance(++nextPointPosition);
+            }
         },
         complete: () => {
             running = false;
@@ -99,7 +132,7 @@ function startRun() {
                         marginLeft: '5140px'
                     }, {
                         complete: () => {
-                            runner.removeClass('running');
+                            runner.removeClass('running').addClass('standing');
                             $('#pyre_notfired').addClass('hide');
                             $('#pyre_fired').removeClass('hide');
 
@@ -129,7 +162,7 @@ function startRun() {
 function stopRun(won) {
     running = false;
 
-    $('#runner').removeClass('running').stop();
+    $('#runner').removeClass('running').addClass('standing').stop();
     $('#game').stop();
 
     const root = $('#end').removeClass('hide');
@@ -149,6 +182,8 @@ function jump() {
 
         jumping = true;
 
+        runner.addClass('jumping').removeClass('running');
+
         runner.animate({
             marginBottom: margin + 100 + 'px',
         }, {
@@ -162,6 +197,7 @@ function jump() {
                     queue: false,
                     complete: () => {
                         jumping = false;
+                        runner.addClass('running').removeClass('jumping');
                     }
                 })
             }
@@ -169,8 +205,11 @@ function jump() {
     }
 }
 
-changeRunway(0);
+makeRunwayChange(runway);
 initObstacles();
+
+points.removeClass('show');
+panels.removeClass('show');
 
 $('#startButton,#restartButton').click(ev => {
     ev.preventDefault();
@@ -178,7 +217,6 @@ $('#startButton,#restartButton').click(ev => {
 });
 
 $(document).keydown(ev => {
-    //console.log(ev.which)
     if (ev.which === 38) {
         changeRunway(-1);
     } else if (ev.which === 40) {

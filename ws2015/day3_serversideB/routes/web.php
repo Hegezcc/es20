@@ -31,3 +31,4 @@ Route::get('/booking/confirmation', 'BookingController@bookingConfirmation')->na
 
 // Management routes
 Route::get('/management', 'ManagementController@getReservations')->name('management');
+Route::post('/managemen/save', 'ManagementController@handleManagementPost')->name('management.save');

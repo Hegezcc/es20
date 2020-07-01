@@ -1,5 +1,6 @@
 <?php
 
+use App\Day;
 use App\DiningExperience;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,52 +18,49 @@ class CreateDiningOptionsTable extends Migration
     {
         Schema::create('dining_options', function (Blueprint $table) {
             $table->id();
-            $table->string('day_name');
-            $table->date('date');
             $table->string('time');
+            $table->unsignedBigInteger('guest_count');
+            $table->unsignedBigInteger('competitor_count')->default(6);
             $table->unsignedBigInteger('dining_experience_id');
+            $table->unsignedBigInteger('day_id');
 
             $table->foreign('dining_experience_id')->references('id')->on('dining_experiences');
+            $table->foreign('day_id')->references('id')->on('days');
         });
 
         $experiences = DiningExperience::get(['id', 'name']);
+        $days = Day::all();
 
         $options = [];
-        $days = [
-            'C1' => '2015-08-04',
-            'C2' => '2015-08-05',
-            'C3' => '2015-08-06',
-            'C4' => '2015-08-07',
-        ];
 
         foreach ($experiences as $exp) {
             $times = [];
             switch ($exp->name) {
                 case 'Casual Dining':
-                    $times[] = '10:50 - 12:00';
-                    $times[] = '13:30 - 14:40';
+                    $times['10:50 - 12:00'] = 4;
+                    $times['13:30 - 14:40'] = 2;
                     break;
 
                 case 'Bar Service':
-                    $times[] = '13:15 - 14:45';
+                    $times['13:15 - 14:45'] = 6;
                     break;
 
                 case 'Fine Dining':
-                    $times[] = '13:00 - 15:15';
+                    $times['13:00 - 15:15'] = 4;
                     break;
                 default:
                 case 'Banquet Dining':
-                    $times[] = '12:45 - 15:00';
+                    $times['12:45 - 15:00'] = 6;
                     break;
             }
 
-            foreach ($days as $day_name => $date) {
-                foreach ($times as $time) {
+            foreach ($days as $day) {
+                foreach ($times as $time => $guest_count) {
                     $options[] = [
-                        'day_name' => $day_name,
-                        'date' => $date,
                         'time' => $time,
-                        'dining_experience_id' => $exp->id
+                        'guest_count' => $guest_count,
+                        'dining_experience_id' => $exp->id,
+                        'day_id' => $day->id,
                     ];
                 }
             }

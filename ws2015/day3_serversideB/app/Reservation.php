@@ -16,6 +16,11 @@ class Reservation extends Model
         'agree' => 'accepted'
     ];
 
+    public function diningOptions()
+    {
+        return $this->belongsToMany('App\DiningOption', 'guests');
+    }
+
     public function guests()
     {
         return $this->hasMany('App\Guest');

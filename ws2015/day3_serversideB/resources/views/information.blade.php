@@ -29,7 +29,23 @@
                 <tbody>
                 <tr>
                     @foreach($experiences as $exp)
-                    <td>{{ $exp->description }}</td>
+                        <td>{{ $exp->description }}</td>
+                    @endforeach
+
+                </tr>
+                <tr>
+                    @foreach($experiences as $exp)
+                        <td>Tables of {{ $exp->diningOptions()->where('day_id', 1)->pluck('guest_count')->sort()->join(', ', ' and ') }}</td>
+                    @endforeach
+
+                </tr>
+                <tr>
+                    @foreach($experiences as $exp)
+                        <td>
+                            @foreach($exp->diningOptions()->where('day_id', 1)->pluck('time') as $time)
+                            Seating{{ $loop->count === 1 ? '' : " {$loop->iteration}" }}: {{$time}}<br>
+                            @endforeach
+                        </td>
                     @endforeach
 
                 </tr>
