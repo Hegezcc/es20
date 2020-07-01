@@ -54,7 +54,7 @@
       <paths name="localhost">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="ws2015/day3_layoutB" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<title>Custom Puzzle - WorldSkills 2015</title>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<main id="app">
+	<!-- START -->
+	<div id="start" v-if="s.state === 'start'">
+		<div class="box">
+			<h2>Welcome do Custom Puzzle!</h2>
+			<p>This game consists in you make your puzzle game</p>
+			<form @submit="startGame($event)">
+				<div class="group">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" v-model="s.name" required />
+				</div>
+				<div class="group">
+					<label for="difficult">Difficult</label>
+					<select name="difficult" id="difficult" v-model.number="s.difficulty">
+						<option value="1">EASY</option>
+						<option value="2">MEDIUM</option>
+						<option value="3">HARD</option>
+					</select>
+				</div>
+				<!-- DROP -->
+				<div class="group" id="drop">
+					<input type="file" @change="processFile($event)" accept="image/jpeg">
+					<div class="preview" :style="{ backgroundImage: `url(${imgBlob})` }">
+					</div>
+					<p>{{ s.filename ?? 'Drop your photo here!'}}</p>
+				</div><!-- END DROP -->
+				<div class="group">
+					<button type="submit" name="submit">START</button>
+				</div>
+			</form>
+		</div>
+	</div><!-- END START -->
+
+	<!-- END -->
+	<div id="end" v-if="s.state === 'end'">
+		<div class="box">
+			<h3>Congratulations! You have solved the puzzle!</h3>
+			<p>You did it!</p>
+			<table>
+				<thead>
+					<tr>
+						<th>POSITION</th>
+						<th>LEVEL</th>
+						<th>NAME</th>
+						<th>TIME</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>EASY</td>
+						<td>JOHN DOE</td>
+						<td>1:00</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>EASY</td>
+						<td>JOHN DOE</td>
+						<td>1:20</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>EASY</td>
+						<td>JOHN DOE</td>
+						<td>1:40</td>
+					</tr>
+					<tr class='you'>
+						<td>24</td>
+						<td>EASY</td>
+						<td>JOHN DOE</td>
+						<td>9:40</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="btn btn-restart" @click="clearStorage">RESTART APPLICATION</button>
+		</div>
+	</div><!-- END END -->
+
+	<!-- GAMECONTAINER -->
+	<div id="gameContainer" v-if="s.state === 'game'">
+		<div class="container">
+			
+
+			<!-- PLAYERNAME -->
+			<span id="playername">{{ s.name }}</span>
+			<!-- TIMER -->
+			<div id="timer">
+				<span>{{ s.time | formatTime }}</span>
+			</div>
+
+			<div id="puzzleContainer">
+				<div id="pauser" v-if="s.paused"></div>
+				<!-- PUZZLE -->
+				<div id="puzzle" :style="{ gridTemplateColumns: `repeat(${size}, auto)` }">
+					<piece v-for="(p, i) of s.gameState" :key="p.index" :state="p" :img="imgBlob" :size="size" :i="i" type="start"></piece>
+				</div>
+				
+				<div id="puzzleDestination" :style="{ gridTemplateColumns: `repeat(${size}, auto)` }">
+					<piece v-for="(p, i) of s.gameStateFinal" :key="p.index" :state="p" :img="imgBlob" :size="size" :i="i" type="dest"></piece>
+				</div>
+			</div>
+
+			<div class="buttons">
+				<button class="btn btn-pause" @click="pause">PAUSE</button>
+				<button class="btn btn-restart" @click="clearStorage">RESTART</button>
+			</div>
+		</div>
+	</div><!-- END GAMECONTAINER -->
+	</main>
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src='js/script.js'></script>
+
+</body>
+</html>
