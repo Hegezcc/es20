@@ -1,0 +1,25 @@
+<article class="subtitle-row">
+    <h2>Playing game...</h2>
+    <article class="alert-spacing">
+        <!--<article class="alert">You Win!!</article>-->
+    </article>
+    <figure class="container-photo circle img_tic o"></figure>
+    <figure class="container-photo circle img_tic x"></figure>
+    <p class="dates">Time: <span class="time"><?= strtotime($match->access_time) - strtotime($match->start_time) ?> sec</span></p>
+    <h3 class="relative-pos-game">
+        <span class="points"><span class="nameuser">Player: <span class="usermoves moves">2</span></span></span><span class="points"><span class="computer">Computer: <span class="computermoves moves">2</span></span></span>
+    </h3>
+</article>
+<article class="container-row relative-pos-game">
+    <article class="game">
+        <?php foreach ($moves as $move) : ?>
+        <article class="field"><a href="<?= ($move->id === null) ? "?move=$move->square_id" : '#' ?>" id="<?= $move->square_id ?>" class="btn img_tic <?= $move->id !== null ? ($move->is_player ? 'o' : 'x'):'' ?>"></a></article>
+        <?php endforeach; ?>
+    </article>
+</article>
+<article class="container-row center form">
+    <br>
+</article>
+<div class="button-start">
+    <a href="?restart=true"><button>START NEW GAME</button></a>
+</div>
