@@ -1,0 +1,659 @@
+@font-face {
+  /* TODO */
+  font-family: AlegreyaSans;
+  src: url("Alegreya_Sans/AlegreyaSans-Regular.ttf") format("truetype");
+}
+@keyframes cityHover {
+  from {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 70%;
+    transform: translate(-13px, -13px);
+  }
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.banner {
+  background-image: url(photos/photo-1464059728276-d877187d61a9.jpeg);
+  background-size: cover;
+  background-position: 50% 20%;
+  padding: 4em 2em;
+  border-bottom: 2px solid transparent;
+  border-image: url(photos/rainbow.png) 1 stretch;
+}
+.banner div {
+  font-size: 200%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5em 1em;
+  width: max-content;
+  margin: auto;
+}
+
+footer {
+  background-image: url(photos/Footer-2x.png);
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.tablet, .desktop {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+header {
+  background: black;
+  color: white;
+}
+header ul {
+  display: flex;
+  padding-left: 0;
+  margin: 0 auto;
+  max-width: 900px;
+}
+header ul li {
+  list-style-type: none;
+  line-height: 1;
+  flex: 1 1 auto;
+  display: block;
+  padding: 1em;
+  text-align: center;
+  border-right: 1px dotted #888;
+  border-left: 1px dotted #888;
+}
+header ul li:hover, header ul li.active {
+  background: #333;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto 0;
+  background: white;
+  border: 2px solid transparent;
+  border-image: url(photos/rainbow.png) 1 stretch;
+}
+.content article {
+  display: block;
+  padding: 1rem;
+}
+.content article h1 {
+  margin-top: 0;
+}
+.content article.promotion img {
+  margin: 0 -1rem -1rem;
+  width: calc(100% + 2rem);
+  display: block;
+}
+.content article.tickets .counts {
+  display: flex;
+  margin-bottom: 1em;
+}
+.content article.tickets .counts label {
+  display: block;
+  flex: 1 1 auto;
+  margin-right: 2.5em;
+}
+.content article.tickets .counts label:last-child {
+  margin-right: 0;
+}
+.content article.tickets .counts label span {
+  display: block;
+  margin-bottom: 0.25em;
+}
+.content article.tickets .counts label input {
+  border: 1px solid #aaa;
+  padding: 1em 0.75em;
+  margin: 0;
+  font-size: 1em;
+  box-shadow: inset 0.05em 0.1em 0.2em #ccc;
+  width: calc(100% - 1.5em);
+}
+.content article.tickets .ticket-container {
+  display: flex;
+  margin-bottom: 1em;
+}
+.content article.tickets .ticket-container:last-child {
+  margin-bottom: 0;
+}
+.content article.tickets .ticket-container label.name {
+  display: block;
+  margin-bottom: 0.25em;
+}
+.content article.tickets .ticket-container label.name span {
+  display: block;
+  margin-bottom: 0.25em;
+}
+.content article.tickets .ticket-container label.name input[type=text] {
+  border: 1px solid #aaa;
+  padding: 1em 0.75em;
+  margin: 0;
+  font-size: 1em;
+  box-shadow: inset 0.05em 0.1em 0.2em #ccc;
+  width: calc(100% - 1.5em);
+}
+.content article.tickets .ticket-container .ticket {
+  flex: 1 0 auto;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.content article.tickets .ticket-container .ticket p {
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+}
+.content article.tickets button {
+  width: 100%;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.content article .attraction-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 2rem 1rem;
+}
+.content article .attraction-container .attraction {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.content article .attraction-container .attraction * {
+  transition: all 0.5s;
+}
+.content article .attraction-container .attraction img {
+  display: block;
+  width: 100%;
+  filter: brightness(70%) sepia(100%) grayscale(60%) hue-rotate(290deg);
+}
+.content article .attraction-container .attraction p {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0.5em 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+.content article .attraction-container .attraction p:before, .content article .attraction-container .attraction p:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0.5em;
+  bottom: 0;
+  left: -100%;
+  background: gold;
+  transition: 0.5s all;
+}
+.content article .attraction-container .attraction p:before {
+  background: tomato;
+}
+.content article .attraction-container .attraction p:after {
+  left: -250%;
+  background: gold;
+}
+.content article .attraction-container .attraction:hover img {
+  transform: scale(1.1);
+  filter: none;
+}
+.content article .attraction-container .attraction:hover p {
+  background-color: white;
+}
+.content article .attraction-container .attraction:hover p:before, .content article .attraction-container .attraction:hover p:after {
+  left: 0 !important;
+}
+.content article.financial button {
+  display: block;
+  margin: 1em auto;
+  color: skyblue;
+  background: transparent;
+  padding: 1.5em 2em;
+  border: 1px solid skyblue;
+  border-radius: 3px;
+}
+.content article.financial button .download-arrow {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  position: relative;
+}
+.content article.financial button .download-arrow span {
+  display: block;
+  position: absolute;
+  width: 0.1em;
+  height: 0.1em;
+  background: skyblue;
+  transition: 0.5s all;
+  opacity: 0;
+}
+.content article.financial button .download-arrow span:nth-child(1) {
+  top: -0.08em;
+  left: 1.37em;
+}
+.content article.financial button .download-arrow span:nth-child(2) {
+  top: 0.59em;
+  left: 0.62em;
+}
+.content article.financial button .download-arrow span:nth-child(3) {
+  top: 1.27em;
+  left: 0.76em;
+}
+.content article.financial button .download-arrow span:nth-child(4) {
+  top: -0.35em;
+  left: 1.14em;
+}
+.content article.financial button .download-arrow span:nth-child(5) {
+  top: 1.43em;
+  left: 0.47em;
+}
+.content article.financial button .download-arrow span:nth-child(6) {
+  top: 0.57em;
+  left: 0.34em;
+}
+.content article.financial button .download-arrow span:nth-child(7) {
+  top: 0.47em;
+  left: 0.7em;
+}
+.content article.financial button .download-arrow span:nth-child(8) {
+  top: 0.99em;
+  left: 1.04em;
+}
+.content article.financial button .download-arrow span:nth-child(9) {
+  top: -0.41em;
+  left: -0.43em;
+}
+.content article.financial button .download-arrow span:nth-child(10) {
+  top: 1.44em;
+  left: 0.48em;
+}
+.content article.financial button:hover span {
+  opacity: 1;
+}
+.content article.financial button:hover span:nth-child(1) {
+  top: 0em;
+  left: 0.5em;
+}
+.content article.financial button:hover span:nth-child(2) {
+  top: 0.2em;
+  left: 0.5em;
+}
+.content article.financial button:hover span:nth-child(3) {
+  top: 0.4em;
+  left: 0.5em;
+}
+.content article.financial button:hover span:nth-child(4) {
+  top: 0.6em;
+  left: 0.5em;
+}
+.content article.financial button:hover span:nth-child(5) {
+  top: 0.8em;
+  left: 0.5em;
+}
+.content article.financial button:hover span:nth-child(6) {
+  top: 0.8em;
+  left: 0.3em;
+}
+.content article.financial button:hover span:nth-child(7) {
+  top: 0.6em;
+  left: 0.1em;
+}
+.content article.financial button:hover span:nth-child(8) {
+  top: 0.8em;
+  left: 0.7em;
+}
+.content article.financial button:hover span:nth-child(9) {
+  top: 0.6em;
+  left: 0.9em;
+}
+.content article.financial button:hover span:nth-child(10) {
+  top: 1em;
+  left: 0.5em;
+}
+.content article.financial .stock {
+  display: flex;
+}
+.content article.financial .stock div {
+  flex: 0 1 50%;
+}
+.content article.financial .stock .info {
+  text-align: right;
+  margin-right: 0.5em;
+  padding-right: 0.5em;
+  border-right: 1px solid #cccccc;
+}
+.content article.financial .stock .stock-value {
+  font-size: 4em;
+  line-height: 1.5;
+  font-family: monospace;
+  font-weight: 600;
+}
+.content article.about .map {
+  display: flex;
+  margin-right: -1rem;
+  margin-bottom: -1rem;
+}
+.content article.about .map svg {
+  margin-left: auto;
+  width: 100vw;
+  height: 100vw;
+}
+.content article.about .map .st0 {
+  fill: #DDBAA2;
+}
+.content article.about .map .st1 {
+  fill: #CC1559;
+}
+.content article.about .map .st2 {
+  position: relative;
+  fill: crimson;
+}
+.content article.about .map.Gothernburg .st2.goteburg {
+  animation: cityHover 1s infinite;
+}
+.content article.about .map.Oslo .st2.oslo {
+  animation: cityHover 1s infinite;
+}
+.content article.about .map.Stockholm .st2.stockholm {
+  animation: cityHover 1s infinite;
+}
+.content article.careers .attraction img {
+  filter: none;
+}
+.content article.events .event {
+  display: flex;
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+}
+.content article.events .event .date {
+  flex: 0 1 25%;
+  text-align: right;
+  margin-right: 5rem;
+  position: relative;
+  font-style: italic;
+}
+.content article.events .event .date:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 4.65rem;
+  width: 0;
+  right: calc(-2.5rem - 0.5px);
+  top: 2.25rem;
+  border-right: 2px dashed skyblue;
+}
+.content article.events .event .date:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  right: -4rem;
+  top: -1rem;
+  border-radius: 4rem;
+  background: tomato;
+}
+.content article.events .event:last-child .date:before {
+  display: none;
+}
+.content article.events .event .title {
+  flex: 1 0 75%;
+}
+.content article.active {
+  display: block;
+}
+.content nav {
+  display: none;
+}
+.content nav ul {
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  padding: 0;
+  margin: 0;
+}
+.content nav ul li {
+  font-size: 0.8em;
+  font-weight: 600;
+  list-style-type: none;
+  line-height: 1;
+  flex: 1 0 0;
+  display: block;
+  padding: 1em 0.25rem;
+  border-right: 0.25rem solid transparent;
+  transition: 0.2s all;
+}
+.content nav ul li:hover, .content nav ul li.active {
+  border-width: 0.5rem;
+}
+.content nav ul li:hover .icon, .content nav ul li.active .icon {
+  top: -5%;
+}
+.content nav ul li.promotion {
+  border-color: crimson;
+}
+.content nav ul li.promotion:hover, .content nav ul li.promotion.active {
+  background-color: rgba(220, 20, 60, 0.2);
+}
+.content nav ul li.tickets {
+  border-color: tomato;
+}
+.content nav ul li.tickets:hover, .content nav ul li.tickets.active {
+  background-color: rgba(255, 99, 71, 0.2);
+}
+.content nav ul li.attractions {
+  border-color: gold;
+}
+.content nav ul li.attractions:hover, .content nav ul li.attractions.active {
+  background-color: rgba(255, 215, 0, 0.2);
+}
+.content nav ul li.financial {
+  border-color: yellowgreen;
+}
+.content nav ul li.financial:hover, .content nav ul li.financial.active {
+  background-color: rgba(154, 205, 50, 0.2);
+}
+.content nav ul li.about {
+  border-color: olivedrab;
+}
+.content nav ul li.about:hover, .content nav ul li.about.active {
+  background-color: rgba(107, 142, 35, 0.2);
+}
+.content nav ul li.careers {
+  border-color: skyblue;
+}
+.content nav ul li.careers:hover, .content nav ul li.careers.active {
+  background-color: rgba(135, 206, 235, 0.2);
+}
+.content nav ul li.events {
+  border-color: rebeccapurple;
+}
+.content nav ul li.events:hover, .content nav ul li.events.active {
+  background-color: rgba(102, 51, 153, 0.2);
+}
+.content .icon {
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+  margin-right: 0.25em;
+  position: relative;
+  background-size: contain;
+}
+.content .promotion .icon {
+  background-image: url(photos/promote-16x16.png);
+}
+.content .tickets .icon {
+  background-image: url(photos/ticket-16x16.png);
+}
+.content .attractions .icon {
+  background-image: url(photos/wheel-16x16.png);
+}
+.content .financial .icon {
+  background-image: url(photos/financial-16x16.png);
+}
+.content .about .icon {
+  background-image: url(photos/about-16x16.png);
+}
+.content .careers .icon {
+  background-image: url(photos/career-16x16.png);
+}
+.content .events .icon {
+  background-image: url(photos/news-16x16.png);
+}
+
+.gem {
+  padding: 1rem 0 3rem;
+}
+.gem.gem-0 .dot-1, .gem.gem-0 .dot-2, .gem.gem-0 .dot-3, .gem.gem-0 .dot-4, .gem.gem-0 .dot-5, .gem.gem-0 .dot-6, .gem.gem-0 .dot-7 {
+  display: none;
+}
+.gem.gem-0 .gem-container:hover .dot-1, .gem.gem-0 .gem-container:hover .dot-2, .gem.gem-0 .gem-container:hover .dot-3, .gem.gem-0 .gem-container:hover .dot-4, .gem.gem-0 .gem-container:hover .dot-5, .gem.gem-0 .gem-container:hover .dot-6, .gem.gem-0 .gem-container:hover .dot-7 {
+  display: block;
+}
+.gem.gem-1 .gem-container {
+  width: 8px;
+  height: 8px;
+}
+.gem.gem-2 .gem-container {
+  width: 16px;
+  height: 16px;
+}
+.gem.gem-3 .gem-container {
+  width: 350px;
+  height: auto;
+}
+.gem.gem-3 .gem-container .dot {
+  border-radius: 5px;
+}
+.gem.gem-3 .gem-container .dot-8 {
+  background: rgba(255, 255, 255, 0.8);
+}
+.gem.gem-3 .gem-container .gem-content {
+  display: block;
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+.gem .gem-container {
+  display: block;
+  width: 2px;
+  height: 2px;
+  margin: 0 auto;
+  position: relative;
+}
+.gem .gem-container .gem-content {
+  display: none;
+}
+.gem .gem-container .dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.gem .gem-container .dot-1 {
+  background: tomato;
+  top: -8px;
+  left: -8px;
+}
+.gem .gem-container .dot-2 {
+  background: gold;
+  top: 5px;
+  left: 0;
+}
+.gem .gem-container .dot-3 {
+  background: yellowgreen;
+  top: -8px;
+  left: 5px;
+}
+.gem .gem-container .dot-4 {
+  background: olivedrab;
+  top: 5px;
+  left: -5px;
+}
+.gem .gem-container .dot-5 {
+  background: skyblue;
+  top: -7px;
+  left: 0;
+}
+.gem .gem-container .dot-6 {
+  background: rebeccapurple;
+  top: -2px;
+  left: -2px;
+  padding: 2px;
+}
+.gem .gem-container .dot-7 {
+  background: crimson;
+  top: 5px;
+  left: 3px;
+}
+.gem .gem-container .dot-8 {
+  background: black;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 640px) {
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+  }
+
+  .content nav {
+    display: block;
+  }
+  .content .about .map svg {
+    width: 540px !important;
+    height: 540px !important;
+  }
+
+  .attraction-container {
+    grid-template-columns: auto auto !important;
+  }
+}
+@media (min-width: 900px) {
+  .desktop {
+    display: block;
+  }
+
+  .banner {
+    padding-bottom: 14rem;
+  }
+
+  .content {
+    flex-direction: column;
+    top: -10rem;
+  }
+  .content article {
+    display: none;
+  }
+  .content .about .map svg {
+    width: 60% !important;
+    height: 60% !important;
+  }
+  .content nav ul {
+    flex-direction: row;
+    width: auto;
+  }
+  .content nav ul li {
+    border-right: none !important;
+    border-bottom: 0.25rem solid transparent;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
