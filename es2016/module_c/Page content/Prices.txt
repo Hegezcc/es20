@@ -1,0 +1,18 @@
+Prices
+Adults                                          18 EUR
+Children from 6 to 13 years                      9 EUR
+Teenagers from 14 to 18 years                   14 EUR
+Family (2 adults and 2 children)                49 EUR
+Family (2 adults und 3 children)                56 EUR
+Group more than 10 adults, per adult            17 EUR
+Group more than 10 children, per child           7 EUR
+Students                                        16 EUR
+
+18 EUR
+9 EUR
+14 EUR
+49 EUR
+56 EUR
+17 EUR
+7 EUR
+16 EUR

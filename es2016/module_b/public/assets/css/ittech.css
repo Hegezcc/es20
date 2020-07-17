@@ -1,0 +1,83 @@
+.column-login {
+    max-width: 450px;
+}
+
+.login > .grid {
+    height: 100%;
+}
+
+.ui.footer.segment {
+    margin: 5em 0 0;
+}
+
+.ui.menu {
+    z-index: 1;
+    position: relative;
+}
+
+.ui.button.remove-question {
+    margin-top: 1.6em;
+}
+
+/* Banner */
+.banner {
+    margin-top: -10px;
+    height: 400px;
+    background: #d6d6d6;
+    text-align: center;
+    margin-bottom: 3em;
+}
+/* /Banner */
+
+.item .image img {
+    max-width: 100%;
+}
+
+.ui.button.new-survey, .ui.button.new-question {
+    margin-left: 10px;
+}
+
+.ui.cards>.card.card-employees {
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+.ui.cards>.card.card-employees .header {
+    margin-bottom: 0.5em;
+}
+
+.ui.menu .item>img :not(.ui) {
+    width: 5em;
+}
+
+.banner {
+    overflow: hidden;
+    /*noinspection CssUnknownTarget*/
+    background: url('/Banner/comfortable-survey-taker.jpg') no-repeat center;
+    background-size: cover;
+
+}
+
+.banner p {
+    font-size: 2em;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+}
+
+#baseQuestion {
+    display: none;
+}
+
+.has-error {
+    box-shadow: 0 0 4px red !important;
+}
+
+.card .image {
+    height: 0;
+    padding-bottom: 75% !important;
+    overflow: hidden;
+}
