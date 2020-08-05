@@ -1,0 +1,928 @@
+$crimson: crimson;
+$tomato: tomato;
+$gold: gold;
+$yellowgreen: yellowgreen;
+$olivedrab: olivedrab;
+$skyblue: skyblue;
+$rebeccapurple: rebeccapurple;
+
+body {
+  font-family: AlegreyaSans, sans-serif !important;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.banner {
+  background-image: url(/media/photos/photo-1464059728276-d877187d61a9.jpeg);
+  background-size: cover;
+  background-position: 50% 20%;
+  padding: 4em 2em;
+
+  border-bottom: 2px solid transparent;
+  border-image: url(/media/sprites/rainbow.png) 1 stretch;
+
+  div {
+    font-size: 200%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5em 1em;
+    width: max-content;
+    margin: auto;
+  }
+}
+
+footer {
+  background-image: url(/media/footer.png);
+  background-size: auto 100%;
+  background-position: center;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.tablet, .desktop {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+header {
+  background: black;
+  color: white;
+
+  ul {
+    display: flex;
+    padding-left: 0;
+    margin: 0 auto;
+    max-width: 900px;
+
+    li {
+      list-style-type: none;
+      line-height: 1;
+      flex: 1 1 0;
+      display: block;
+      padding: 1em;
+      text-align: center;
+      border-right: 1px dotted #888;
+      border-left: 1px dotted #888;
+
+      &:hover, &.active {
+        background: #333;
+      }
+    }
+  }
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto 0;
+  background: white;
+
+  border: 2px solid transparent;
+  border-image: url(/media/sprites/rainbow.png) 1 stretch;
+
+  article {
+    display: block;
+    padding: 1rem;
+
+    h1 {
+      margin-top: 0;
+    }
+
+    &.promotion {
+      img {
+        margin: 0 -1rem -1rem;
+        width: calc(100% + 2rem);
+        display: block;
+      }
+    }
+
+    &.tickets {
+      .counts {
+        display: flex;
+        margin-bottom: 1em;
+
+        label {
+          display: block;
+          flex: 1 1 auto;
+          margin-right: 2.5em;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          span {
+            display: block;
+            margin-bottom: 0.25em;
+          }
+
+          input {
+            border: 1px solid #aaa;
+            padding: 1em 0.75em;
+            margin: 0;
+            font-size: 1em;
+            box-shadow: inset 0.05em 0.1em 0.2em #ccc;
+            width: 100%;
+            box-sizing: border-box;
+          }
+        }
+      }
+
+      .ticket-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .inputs {
+          flex: 0 1 50%;
+          margin-right: 0;
+
+          label.name {
+            display: block;
+            margin-bottom: 0.25em;
+
+            span {
+              display: block;
+              margin-bottom: 0.25em;
+              line-height: 1.5;
+            }
+
+            input[type="text"] {
+              border: 1px solid #aaa;
+              padding: 1em 0.75em;
+              margin: 0;
+              font-size: 1em;
+              box-shadow: inset 0.05em 0.1em 0.2em #ccc;
+              width: 100%;
+              box-sizing: border-box;
+            }
+          }
+        }
+
+        .ticket {
+          position: relative;
+          display: flex;
+          flex: 1 0 50%;
+          height: 5rem;
+          background-size: 0;
+          margin-top: 1.75rem;
+
+          .start, .middle, .end {
+            background-size: auto 100%;
+            height: 100%;
+          }
+
+          .start, .end {
+            background-image: url("/media/tickets/ticket-normal.png");
+          }
+
+          .start {
+            width: 9.2rem;
+          }
+
+          .middle {
+            background-image: url("/media/tickets/ticket-normal-middle.png");
+            background-repeat: round;
+            flex: 1 0 0;
+          }
+
+          .end {
+            width: 0.6rem;
+            background-position: right;
+          }
+
+          p {
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            font-weight: 800;
+            margin: 0.75rem 0;
+          }
+
+          &.fastpass {
+            .start, .end {
+              background-image: url("/media/tickets/ticket-fastpass.png");
+            }
+
+            .start {
+              width: 6rem;
+            }
+
+            .middle {
+              background-image: url("/media/tickets/ticket-fastpass-middle.png");
+            }
+
+            .end {
+              width: 9.1rem;
+            }
+
+            p {
+              color: white;
+            }
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: 1.5rem;
+        margin-top: 1rem;
+      }
+    }
+
+    .attraction-container {
+      display: grid;
+      grid-template-columns: auto;
+
+      .attraction {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+
+        * {
+          transition: all 0.5s;
+        }
+
+        img {
+          display: block;
+          width: 100%;
+          filter: brightness(70%) sepia(100%) grayscale(60%) hue-rotate(290deg);
+        }
+
+        p {
+          position: absolute;
+          bottom: 1rem;
+          left: 1rem;
+          line-height: 1.5;
+          margin: 0;
+          padding: 0.5em 1em;
+          background-color: rgba(white, 0.8);
+          overflow: hidden;
+
+          &:before, &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 0.5em;
+            bottom: 0;
+            left: -100%;
+            background: gold;
+            transition: 0.5s all;
+          }
+
+          &:before {
+            background: tomato;
+          }
+
+          &:after {
+            left: -250%;
+            background: gold;
+          }
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.1);
+            filter: none;
+          }
+
+          p {
+            background-color: white;
+
+            &:before, &:after {
+              left: 0 !important;
+            }
+          }
+        }
+      }
+    }
+
+    &.financial {
+      button {
+        display: block;
+        margin: 1em auto;
+
+        color: skyblue;
+        background: transparent;
+        padding: 1.5em 2em;
+        border: 1px solid skyblue;
+        border-radius: 3px;
+
+        .download-arrow {
+          display: inline-block;
+          height: 1em;
+          width: 1em;
+          position: relative;
+
+          span {
+            display: block;
+            position: absolute;
+            width: 0.1em;
+            height: 0.1em;
+            background: #888;
+            transition: 0.5s all ease-out;
+            opacity: 0;
+
+            @for $i from 1 through 10 {
+              &:nth-child(#{$i}) {
+                top: (random(200) - 50) / 100 + em;
+                left: (random(200) - 50) / 100 + em;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          filter: brightness(0.5);
+
+          span {
+            opacity: 1;
+            background: skyblue;
+          }
+
+          span:nth-child(1) {
+            top: 0;
+            left: 0.5em;
+          }
+
+          span:nth-child(2) {
+            top: 0.2em;
+            left: 0.5em;
+          }
+
+          span:nth-child(3) {
+            top: 0.4em;
+            left: 0.5em;
+          }
+
+          span:nth-child(4) {
+            top: 0.6em;
+            left: 0.5em;
+          }
+
+          span:nth-child(5) {
+            top: 0.8em;
+            left: 0.5em;
+          }
+
+          span:nth-child(6) {
+            top: 0.8em;
+            left: 0.3em;
+          }
+
+          span:nth-child(7) {
+            top: 0.6em;
+            left: 0.1em;
+          }
+
+          span:nth-child(8) {
+            top: 0.8em;
+            left: 0.7em;
+          }
+
+          span:nth-child(9) {
+            top: 0.6em;
+            left: 0.9em;
+          }
+
+          span:nth-child(10) {
+            top: 1.0em;
+            left: 0.5em;
+          }
+        }
+      }
+
+      .stock {
+        display: flex;
+
+        div {
+          flex: 0 1 50%;
+        }
+
+        .stock-value {
+          font-size: 4em;
+          line-height: 1.5;
+          font-family: monospace;
+          font-weight: 600;
+        }
+      }
+
+      .info {
+      }
+    }
+
+    &.about {
+      .map {
+        display: flex;
+        margin-right: -1rem;
+        margin-bottom: -1rem;
+
+        svg {
+          margin: 0 -1rem -1rem;
+          width: 100vw;
+          height: 100vw;
+        }
+
+        .st0 {
+          fill: #DDBAA2;
+        }
+
+        .st1 {
+          fill: #CC1559;
+        }
+
+        .st2 {
+          position: relative;
+          stroke: crimson;
+        }
+
+        &.Gothernburg .st2.goteburg {
+          animation: cityHover 1s infinite;
+        }
+
+        &.Oslo .st2.oslo {
+          animation: cityHover 1s infinite;
+        }
+
+        &.Stockholm .st2.stockholm {
+          animation: cityHover 1s infinite;
+        }
+      }
+    }
+
+    &.careers {
+      .attraction img {
+        filter: none;
+      }
+
+      .info {
+        font-weight: 800;
+
+        a {
+          color: inherit;
+        }
+      }
+
+    }
+
+    &.events {
+      .event {
+        display: flex;
+        padding: 2rem 0;
+        margin-bottom: 3rem;
+
+        .date {
+          flex: 0 1 25%;
+          text-align: right;
+          margin-right: 5rem;
+          position: relative;
+          font-style: italic;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 4.65rem;
+            width: 0;
+            right: calc(-2.5rem - 0.5px);
+            top: 2.25rem;
+            border-right: 2px dashed skyblue;
+          }
+
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 3rem;
+            width: 3rem;
+            right: -4rem;
+            top: -1rem;
+            border-radius: 4rem;
+            background: tomato;
+          }
+        }
+
+        &:last-child .date:before {
+          display: none;
+        }
+
+        .title {
+          flex: 1 0 75%;
+          text-decoration: none;
+          font-weight: 500;
+          color: darken($skyblue, 35%);
+        }
+      }
+    }
+  }
+
+  article.active {
+    display: block;
+  }
+
+  nav {
+    display: none;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 10rem;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 0.8em;
+        font-weight: 600;
+        list-style-type: none;
+        line-height: 1;
+        flex: 1 0 0;
+        display: block;
+        padding: 1em 0.25rem;
+
+        &:hover, &.active {
+          border-width: 0.5rem;
+
+          .icon {
+            top: -5%;
+          }
+        }
+
+        border-right: 0.25rem solid transparent;
+
+        &.promotion {
+          border-color: crimson;
+
+          &:hover, &.active {
+            background-color: rgba(crimson, 0.2)
+          }
+        }
+
+        &.tickets {
+          border-color: tomato;
+
+          &:hover, &.active {
+            background-color: rgba(tomato, 0.2)
+          }
+        }
+
+        &.attractions {
+          border-color: gold;
+
+          &:hover, &.active {
+            background-color: rgba(gold, 0.2)
+          }
+        }
+
+        &.financial {
+          border-color: yellowgreen;
+
+          &:hover, &.active {
+            background-color: rgba(yellowgreen, 0.2)
+          }
+        }
+
+        &.about {
+          border-color: olivedrab;
+
+          &:hover, &.active {
+            background-color: rgba(olivedrab, 0.2)
+          }
+        }
+
+        &.careers {
+          border-color: skyblue;
+
+          &:hover, &.active {
+            background-color: rgba(skyblue, 0.2)
+          }
+        }
+
+        &.events {
+          border-color: rebeccapurple;
+
+          &:hover, &.active {
+            background-color: rgba(rebeccapurple, 0.2)
+          }
+        }
+
+        transition: 0.2s all;
+      }
+    }
+  }
+
+  .icon {
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+    margin-right: 0.25em;
+    position: relative;
+    background-size: contain;
+  }
+
+  .promotion {
+    .icon {
+      background-image: url(/media/sprites/promote-16x16.png);
+    }
+  }
+
+  .tickets {
+    .icon {
+      background-image: url(/media/sprites/ticket-16x16.png);
+    }
+  }
+
+  .attractions {
+    .icon {
+      background-image: url(/media/sprites/wheel-16x16.png);
+    }
+  }
+
+  .financial {
+    .icon {
+      background-image: url(/media/sprites/financial-16x16.png);
+    }
+  }
+
+  .about {
+    .icon {
+      background-image: url(/media/sprites/about-16x16.png);
+    }
+  }
+
+  .careers {
+    .icon {
+      background-image: url(/media/sprites/career-16x16.png);
+    }
+  }
+
+  .events {
+    .icon {
+      background-image: url(/media/sprites/news-16x16.png);
+    }
+  }
+}
+
+.gem {
+  padding: 1rem 0 3rem;
+
+  &.gem-0 {
+    .dot-1, .dot-2, .dot-3, .dot-4, .dot-5, .dot-6, .dot-7 {
+      display: none;
+    }
+
+    .gem-container:hover {
+      .dot-1, .dot-2, .dot-3, .dot-4, .dot-5, .dot-6, .dot-7 {
+        display: block;
+      }
+    }
+  }
+
+  &.gem-1 .gem-container {
+    width: 8px;
+    height: 8px;
+  }
+
+  &.gem-2 .gem-container {
+    width: 16px;
+    height: 16px;
+  }
+  
+  &.gem-3 .gem-container {
+    width: 350px;
+    height: auto;
+
+    .dot {
+      border-radius: 5px;
+    }
+
+    .dot-8 {
+      background: rgba(white, 0.8);
+    }
+
+    .gem-content {
+      display: block;
+      position: relative;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .gem-container {
+    display: block;
+    width: 2px;
+    height: 2px;
+    margin: 0 auto;
+    position: relative;
+
+    .gem-content {
+      display: none;
+    }
+
+    .dot {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dot-1 {
+      background: tomato;
+      top: -8px;
+      left: -8px;
+    }
+
+    .dot-2 {
+      background: gold;
+      top: 5px;
+      left: 0;
+    }
+
+    .dot-3 {
+      background: yellowgreen;
+      top: -8px;
+      left: 5px;
+    }
+
+    .dot-4 {
+      background: olivedrab;
+      top: 5px;
+      left: -5px;
+    }
+
+    .dot-5 {
+      background: skyblue;
+      top: -7px;
+      left: 0;
+    }
+
+    .dot-6 {
+      background: rebeccapurple;
+      top: -2px;
+      left: -2px;
+      padding: 2px;
+
+    }
+
+    .dot-7 {
+      background: crimson;
+      top: 5px;
+      left: 3px;
+    }
+
+    .dot-8 {
+      background: black;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .content article {
+    padding: 2rem 1rem;
+    border-top-style: solid;
+    border-top-width: 1px;
+
+    $tabs: ("promotion": $crimson, "tickets": $tomato, "attractions": $gold, "financial": $yellowgreen, "about": $olivedrab, "careers": $skyblue, "events": $rebeccapurple);
+
+    @each $tab, $color in $tabs {
+      &.#{$tab} {
+        border-top-color: $color;
+      }
+    }
+  }
+
+  .financial {
+    .stock {
+      flex-direction: column-reverse;
+      text-align: center;
+      margin-bottom: 3rem;
+
+      p {
+        margin: 0.25em 0;
+      }
+
+      .info {
+        margin-right: 0;
+        padding-right: 0;
+        border-right: none;
+
+        margin-top: 0.5em;
+        padding-top: 0.5em;
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .mobile {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+
+  .content {
+    nav {
+      display: block;
+    }
+
+    .desktop {
+      display: block;
+    }
+
+    article {
+      display: none;
+    }
+
+    .about .map svg {
+      margin: 0 0 0 auto !important;
+      width: 540px !important;
+      height: 540px !important;
+    }
+
+    .financial .stock .info {
+      text-align: right;
+      margin-right: 0.5em;
+      padding-right: 0.5em;
+      border-right: 1px solid #cccccc;
+    }
+  }
+
+  .attraction-container {
+    grid-template-columns: auto auto !important;
+    grid-gap: 2rem 1rem;
+  }
+
+  .ticket-container {
+    flex-direction: row !important;
+
+    .inputs {
+      margin-right: 2rem !important;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .banner {
+    padding-bottom: 14rem;
+  }
+
+  .content {
+    flex-direction: column;
+    top: -10rem;
+
+    .about .map svg {
+      width: 60% !important;
+      height: 60% !important;
+    }
+
+    nav ul {
+      flex-direction: row;
+      width: auto;
+
+      li {
+        border-right: none !important;
+        border-bottom: 0.25rem solid transparent;
+
+      }
+    }
+  }
+}
+
+@keyframes cityHover {
+  from {
+    opacity: 70%;
+    stroke-width: 0;
+  }
+  to {
+    opacity: 0;
+    stroke-width: 13px;
+  }
+}
+
+$fonts: ("Thin": 100, "Light": 200, "Regular": 400, "Medium": 500, "Bold": 700, "ExtraBold": 800, "Black": 900);
+$flavors: (normal: "", italic: "Italic");
+
+@each $name, $weight in $fonts {
+  @each $flavor, $postfix in $flavors {
+    @font-face {
+      font-family: AlegreyaSans;
+      src: url('/fonts/AlegreyaSans-#{$name}#{$postfix}.ttf');
+      font-weight: $weight;
+      font-style: $flavor;
+    }
+  }
+}

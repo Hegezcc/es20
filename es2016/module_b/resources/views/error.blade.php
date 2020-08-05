@@ -1,5 +1,5 @@
 @extends('master')
-@section('bodyClass', 'login')
+@section('bodyClass', 'login error')
 @section('content')
     <div class="ui middle aligned center aligned grid">
         <div class="column column-login">

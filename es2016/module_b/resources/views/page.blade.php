@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 
-    <div class="ui borderless main menu">
+    <div class="ui borderless main menu noprint">
         <div class="ui container">
             <a href="{{ route('index') }}">
                 <div class="header item">
@@ -14,7 +14,7 @@
     </div>
     @yield('pageContent')
     <!-- Footer -->
-    <div class="ui inverted vertical footer segment">
+    <div class="ui inverted vertical footer segment noprint">
         <div class="ui center aligned container">
             <div class="ui horizontal inverted small divided link list">
                 <a class="item" href="#">Site Map</a>

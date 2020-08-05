@@ -2,6 +2,18 @@
 @section('pageContent')
     <div class="ui grid">
         <div class="banner wide column sixteen">
+            <div class="banner-img banner-1">
+                <div class="title">Step One: Register your survey</div>
+                <div class="source">ITTECHSurveys</div>
+            </div>
+            <div class="banner-img banner-2">
+                <div class="title">Step Two: Collect answers</div>
+                <div class="source">ITTECHSurveys</div>
+            </div>
+            <div class="banner-img banner-3">
+                <div class="title">Step Three: Print the results</div>
+                <div class="source">ITTECHSurveys</div>
+            </div>
         </div>
     </div>
 

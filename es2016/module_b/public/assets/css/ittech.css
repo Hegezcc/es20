@@ -22,7 +22,7 @@
 /* Banner */
 .banner {
     margin-top: -10px;
-    height: 400px;
+    height: 600px;
     background: #d6d6d6;
     text-align: center;
     margin-bottom: 3em;
@@ -53,10 +53,69 @@
 
 .banner {
     overflow: hidden;
-    /*noinspection CssUnknownTarget*/
-    background: url('/Banner/comfortable-survey-taker.jpg') no-repeat center;
-    background-size: cover;
+    position: relative;
+}
 
+.banner-img {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: banner 30s infinite forwards;
+}
+
+.banner-img .title {
+    margin: auto auto 3rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.banner-img .source {
+    position: absolute;
+    bottom: 1rem;
+    left: 4rem;
+    font-style: italic;
+    text-shadow: white 0.5px 1px 2px;
+}
+
+.banner-img.banner-1 {
+    /*noinspection CssUnknownTarget*/
+    background-image: url(/Banner/uu-the-ban-hang-qua-mang-1.jpg);
+    animation-delay: 0s;
+}
+.banner-img.banner-2 {
+    /*noinspection CssUnknownTarget*/
+    background-image: url(/Banner/picture2.jpg);
+    animation-delay: -20s;
+}
+.banner-img.banner-3 {
+    /*noinspection CssUnknownTarget*/
+    background-image: url(/Banner/_default_banner_img.gif);
+    animation-delay: 20s;
+}
+
+@keyframes banner {
+    0% {
+        left: 0;
+        z-index: 1;
+    }
+    35% {
+        left: 0;
+        z-index: 2;
+    }
+
+    40% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+        z-index: 1;
+    }
 }
 
 .banner p {
@@ -80,4 +139,25 @@
     height: 0;
     padding-bottom: 75% !important;
     overflow: hidden;
+}
+
+body.error .column-login {
+    animation-fill-mode: forwards;
+    animation: fadein 2s normal forwards running;
+}
+
+@keyframes fadein {
+    0% {top: -5rem; opacity: 0; transform: scale(1.2)}
+    50% {top: 0;  transform: scale(1);}
+    100% {opacity: 1;}
+}
+
+.celled.table .right.floated.segment {
+    margin-top: 0 !important;
+}
+
+@media print {
+    .noprint, .noprint *, .ui.button {
+        display: none !important;
+    }
 }

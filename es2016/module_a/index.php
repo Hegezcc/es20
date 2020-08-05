@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Funny Island</title>
 </head>
@@ -58,39 +58,39 @@
             <section class="main">
                 <article :class="{ active: currentTab === 'promotion' }" class="promotion">
                     <h1><i class="icon"></i>2 adults, 1 kid free promotion during December.</h1>
-                    <img src="photos/photo-1460788150444-d9dc07fa9dba.jpg" alt="photo of kid swinging">
+                    <img src="media/photos/photo-1460788150444-d9dc07fa9dba.jpg" alt="photo of kid swinging">
                 </article>
                 <article :class="{ active: currentTab === 'tickets' }" class="tickets">
-                    <h1><i class="icon"></i>Tickets</h1>
+                    <h1><i class="icon"></i>Tickets and Admission</h1>
                     <p>Amount of Guests</p>
                     <div class="counts">
-                        <label v-for="(val, key) in tickets" :for="'count-' + key" :key="key">
+                        <label v-for="(val, key) in ticketCounts" :for="'count-' + key" :key="key">
                             <span>{{ key }}:</span>
-                            <input type="number" :id="'count-' + key" min="0" max="10" step="1" v-model.number="tickets[key]">
+                            <input type="number" :id="'count-' + key" min="0" max="10" step="1" v-model.number="ticketCounts[key]">
                         </label>
                     </div>
-                    <div class="ticket-list" v-for="(val, key) in tickets" :key="key">
-                        <vticket v-for="i in val" :key="key + val + '-' + i" :type="key" :i="i" ></vticket>
+                    <div class="ticket-list">
+                        <vticket v-for="i of showTickets" :key="i.type + i.id" :i.sync="i" @fastpass="checkFastpass"></vticket>
                     </div>
-                    <button @click="checkout">Checkout</button>
+                    <button @click="checkout">Checkout and Confirm the tickets</button>
                 </article>
                 <article :class="{ active: currentTab === 'attractions' }" class="attractions">
                     <h1><i class="icon"></i>Attractions</h1>
                     <div class="attraction-container">
                         <div class="attraction">
-                            <img src="photos/photo-1478369317562-3f92a3a9c9d6.jpg" alt="Enjoy the night.">
+                            <img src="media/photos/photo-1478369317562-3f92a3a9c9d6.jpg" alt="Enjoy the night.">
                             <p aria-hidden="true">Enjoy the night.</p>
                         </div>
                         <div class="attraction">
-                            <img src="photos/photo-1454021108581-20ec63d13d55.jpg" alt="Park in birdview">
+                            <img src="media/photos/photo-1454021108581-20ec63d13d55.jpg" alt="Park in birdview">
                             <p aria-hidden="true">Park in birdview</p>
                         </div>
                         <div class="attraction">
-                            <img src="photos/photo-1471893300835-dff67e40e355.jpeg" alt="Crazy tower!">
+                            <img src="media/photos/photo-1471893300835-dff67e40e355.jpeg" alt="Crazy tower!">
                             <p aria-hidden="true">"Crazy tower!</p>
                         </div>
                         <div class="attraction">
-                            <img src="photos/photo-1465779171454-aa85ccf23be6.jpg" alt="Roller coster">
+                            <img src="media/photos/photo-1465779171454-aa85ccf23be6.jpg" alt="Roller coster">
                             <p aria-hidden="true">Roller coster</p>
                         </div>
                     </div>
@@ -108,16 +108,7 @@
                     </div>
                     <button>
                         <i class="download-arrow">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <span v-for="i in 10" :key="i"></span>
                         </i>
                         Download Q3 Financial Report
                     </button>
@@ -130,7 +121,7 @@
                         <li @mouseover="cityHover('Gothernburg')" @mouseout="resetHover">Gothernburg</li>
                         <li @mouseover="cityHover('Oslo')" @mouseout="resetHover">Oslo</li>
                     </ol>
-                    <div class="map" :class="activeCity"><?php require(__DIR__ . '/photos/AxG_Pixel_Europe.svg') ?></div>
+                    <div class="map" :class="activeCity"><?php require(__DIR__ . '/media/europe-map.svg') ?></div>
                 </article>
                 <article :class="{ active: currentTab === 'careers' }" class="careers">
                     <h1><i class="icon"></i>Careers</h1>
@@ -141,27 +132,29 @@
                             <p aria-hidden="true">{{ career.name }}</p>
                         </div>
                     </div>
-                    <p><b>Please send your cover letter and résumé via email: <a href="mailto:funnyisland@example.com">funnyisland@example.com</a>.</b></p>
-                    <p><b><a href="#">Learn more about our benefits.</a></b></p>
+                    <div class="info">
+                        <p>Please send your cover letter and résumé via email: <a href="mailto:funnyisland@example.com">funnyisland@example.com</a>.</p>
+                        <p><a href="#">Learn more about our benefits.</a></p>
+                    </div>
                 </article>
                 <article :class="{ active: currentTab === 'events' }" class="events">
                     <h1><i class="icon"></i>Events & News</h1>
                     <div class="events">
                         <div class="event">
                             <div class="date">2016-12-01</div>
-                            <div class="title">Upcoming theme park opening in Lisbon in 2018.</div>
+                            <a href="#" class="title">Upcoming theme park opening in Lisbon in 2018.</a>
                         </div>
                         <div class="event">
                             <div class="date">2016-11-28</div>
-                            <div class="title">Christmas Party month</div>
+                            <a href="#" class="title">Christmas Party month</a>
                         </div>
                         <div class="event">
                             <div class="date">2016-11-25</div>
-                            <div class="title">Q4 financial report to be announced on Feb 2017</div>
+                            <a href="#" class="title">Q4 financial report to be announced on Feb 2017</a>
                         </div>
                         <div class="event">
                             <div class="date">2016-11-04</div>
-                            <div class="title">Q3 financial report is ready</div>
+                            <a href="#" class="title">Q3 financial report is ready</a>
                         </div>
                     </div>
                 </article>
@@ -190,6 +183,6 @@
         <p>©2016, Funny Island Company. Attraction photos from Unsplash. Europe map from public domain.</p>
     </footer>
 </div>
-<script src="main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

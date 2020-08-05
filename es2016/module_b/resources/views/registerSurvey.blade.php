@@ -39,25 +39,25 @@
                     </select>
                 </div>
 
-                <div class="ui cards">
+                <div class="ui cards" id="employees">
                     <div class="card card-employees">
                         <div class="content">
                             <div class="header">Employees Access</div>
                             <div class="two fields">
                                 <div class="field">
                                     <label>Filter by Name</label>
-                                    <input type="text" placeholder="Filter by Name">
+                                    <input type="text" v-model="name" placeholder="Filter by Name">
                                 </div>
 
                                 <div class="field">
                                     <label>Filter by Company</label>
-                                    <input type="text" placeholder="Filter by Company">
+                                    <input type="text" v-model="company" placeholder="Filter by Company">
                                 </div>
                             </div>
 
                             <div class="description">
                                 <h4 class="ui dividing header">Employees</h4>
-                                <div class="ui very relaxed horizontal list">
+                                <div class="ui very relaxed horizontal list" id="employee-container">
                                     @foreach($employees as $emp)
                                     <div class="item" data-name="{{$emp->name}}" data-company="{{$emp->contract->partner->companyName ?? null}}">
                                         <div class="content">
@@ -146,20 +146,9 @@
             </form>
         </div>
     </div>
+    @if(!old('answer_type'))
     <script>
-        function removeQuestion(ev) {
-            ev.preventDefault();
-            ev.target.closest('.three.fields').remove();
-        }
-        function addQuestion(ev) {
-            if (ev) ev.preventDefault();
-            const el = document.getElementById('baseQuestion').cloneNode(true)
-            el.id = '';
-
-            document.getElementById('questionContainer').appendChild(el);
-        }
-        @if(!old('answer_type'))
-            addQuestion();
-        @endif
+        document.addEventListener('load', () => addQuestion());
     </script>
+    @endif
 @endsection

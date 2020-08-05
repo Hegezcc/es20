@@ -3,7 +3,7 @@
    <div class="ui grid container">
         <div class="sixteen wide column">
             <div class="ui grid container">
-                <div class="four wide column">
+                <div class="four wide column noprint">
                     <img class="ui medium image" src="{{$s->file ? Storage::url($s->file) : asset('assets/img/default.png')}}">
                 </div>
                 <div class="six wide column">
@@ -54,6 +54,7 @@
                         <tfoot>
                             <tr>
                                 <th colspan="42">
+                                    <a href="javascript:window.print()" class="ui button">Print</a>
                                     <p class="ui right floated segment">Report generated in {{Carbon\Carbon::now()}}</p>
                                 </th>
                             </tr>
