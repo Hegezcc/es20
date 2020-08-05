@@ -1,0 +1,17 @@
+$fonts: ("Thin": 100, "Light": 200, "Regular": 400, "Medium": 500, "Bold": 700, "ExtraBold": 800, "Black": 900);
+$flavors: (regular: "", italic: "Italic");
+
+@each $name, $weight in $fonts {
+  @each $flavor, $postfix in $flavors {
+    @font-face {
+      font-family: "Alegreya Sans";
+      src: url("/fonts/AlegreyaSans-#{$name}#{$postfix}.ttf");
+      font-weight: $weight;
+      font-style: $flavor;
+    }
+  }
+}
+
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}

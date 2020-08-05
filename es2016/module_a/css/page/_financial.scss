@@ -1,0 +1,92 @@
+#financial {
+  .stock {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .info, .price {
+      flex: 1 1 0;
+      padding: 0.5rem;
+      margin: auto;
+    }
+
+    .price {
+      font-family: monospace;
+      font-weight: 900;
+      font-size: 3rem;
+      border-left: 1px solid #ddd;
+    }
+
+    .info {
+      text-align: right;
+
+      p {
+        margin: 0 0 0.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .download {
+    text-align: center;
+    margin: 3rem 0;
+
+    .button {
+      display: inline-block;
+      margin: auto;
+      color: $skyblue;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border: 1px solid $skyblue;
+      border-radius: 0.25rem;
+
+      &:hover {
+        color: darken($skyblue, 40%);
+        border-color: darken($skyblue, 40%);
+
+        .arrow {
+          .dot {
+            opacity: 1;
+            background-color: darken($skyblue, 40%);
+          }
+
+          .dot-1 {top: 0.0em; left: 0.5em;}
+          .dot-2 {top: 0.2em; left: 0.5em;}
+          .dot-3 {top: 0.4em; left: 0.5em;}
+          .dot-4 {top: 0.6em; left: 0.5em;}
+          .dot-5 {top: 0.8em; left: 0.5em;}
+          .dot-6 {top: 1.0em; left: 0.5em;}
+          .dot-7 {top: 0.8em; left: 0.3em;}
+          .dot-8 {top: 0.8em; left: 0.7em;}
+          .dot-9 {top: 0.6em; left: 0.1em;}
+          .dot-10{top: 0.6em; left: 0.9em;}
+        }
+      }
+
+      .arrow {
+        display: inline-block;
+        position: relative;
+        height: 1em;
+        width: 1em;
+
+        .dot {
+          height: 0.1em;
+          width: 0.1em;
+          position: absolute;
+          background-color: #888;
+          transition: 0.5s all;
+          opacity: 0;
+        }
+
+        @for $i from 1 through 10 {
+          .dot-#{$i} {
+            top: #{(random()*2)-0.5}em;
+            left: #{(random()*2)-0.5}em;
+          }
+        }
+      }
+    }
+  }
+}

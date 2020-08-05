@@ -1,0 +1,897 @@
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Thin.ttf");
+  font-weight: 100;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-ThinItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Light.ttf");
+  font-weight: 200;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-LightItalic.ttf");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Regular.ttf");
+  font-weight: 400;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-RegularItalic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Medium.ttf");
+  font-weight: 500;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Bold.ttf");
+  font-weight: 700;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-ExtraBold.ttf");
+  font-weight: 800;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-ExtraBoldItalic.ttf");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-Black.ttf");
+  font-weight: 900;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/AlegreyaSans-BlackItalic.ttf");
+  font-weight: 900;
+  font-style: italic;
+}
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+nav ul li {
+  flex: 1 1 0;
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+}
+
+.phone {
+  display: none;
+}
+
+.tablet {
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .phone {
+    display: block;
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  #main-nav {
+    display: none;
+  }
+
+  #pages .page {
+    display: block !important;
+    padding: 2rem 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: auto !important;
+    grid-gap: 0 !important;
+  }
+
+  #tickets .ticket {
+    flex-direction: column !important;
+  }
+  #tickets .ticket .preview {
+    flex-basis: 6rem !important;
+    margin-left: 0 !important;
+  }
+
+  #about .map svg {
+    height: 100vw !important;
+    width: 100vw !important;
+  }
+
+  #financial .stock {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  #financial .stock .price {
+    border-bottom: 1px solid #ddd !important;
+    border-left: none !important;
+  }
+}
+@media (max-width: 899px) {
+  main {
+    flex-direction: row !important;
+  }
+
+  #main-nav ul {
+    flex-direction: column;
+  }
+  #main-nav ul li {
+    border-bottom-width: 0 !important;
+    padding-bottom: 0.5rem !important;
+    border-right-width: 0.25rem !important;
+    padding-right: 1rem !important;
+  }
+  #main-nav ul li:hover, #main-nav ul li.active {
+    border-right-width: 0.5rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  #about .map svg {
+    height: 540px !important;
+    width: 540px !important;
+  }
+}
+#header {
+  border-bottom: 2px solid transparent;
+  border-image: url(/media/sprites/rainbow.png) 2;
+}
+#header nav {
+  background: black;
+  color: white;
+}
+#header nav ul {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#header nav ul li {
+  text-align: center;
+  border-left: 1px dotted #ccc;
+  border-right: 1px dotted #ccc;
+  padding: 0.7rem;
+}
+#header nav ul li.active {
+  background: #333;
+}
+#header #hero {
+  display: flex;
+  background-image: url(/media/photos/photo-1464059728276-d877187d61a9.jpeg);
+  background-size: cover;
+  background-position: 50% 20%;
+  padding-bottom: 10rem;
+}
+#header #hero h1 {
+  font-size: 200%;
+  margin: 2em auto;
+  padding: 1em 0.5em;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: -10rem auto auto;
+  background: white;
+  border: 2px solid transparent;
+  border-image: url(/media/sprites/rainbow.png) 2;
+}
+
+#main-nav li {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 1rem 0.25rem;
+  border-style: solid;
+  border-width: 0;
+  border-bottom-width: 0.25rem;
+  transition: 0.25s all;
+}
+#main-nav li::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  margin-right: 0.25em;
+  height: 1em;
+  width: 1em;
+  background-position: center center;
+  top: 0;
+  transition: 0.25s all;
+}
+#main-nav li:hover, #main-nav li.active {
+  border-bottom-width: 0.5rem;
+  padding-bottom: 0.75rem;
+}
+#main-nav li:hover::before, #main-nav li.active::before {
+  top: -5%;
+}
+#main-nav li.promotion {
+  border-color: crimson;
+}
+#main-nav li.promotion::before {
+  background-image: url("/media/sprites/promote-16x16.png");
+}
+#main-nav li.promotion:hover, #main-nav li.promotion.active {
+  color: #7f0c23;
+  background-color: #fef1f4;
+}
+#main-nav li.tickets {
+  border-color: tomato;
+}
+#main-nav li.tickets::before {
+  background-image: url("/media/sprites/ticket-16x16.png");
+}
+#main-nav li.tickets:hover, #main-nav li.tickets.active {
+  color: #e02200;
+  background-color: #ffedea;
+}
+#main-nav li.attractions {
+  border-color: gold;
+}
+#main-nav li.attractions::before {
+  background-image: url("/media/sprites/wheel-16x16.png");
+}
+#main-nav li.attractions:hover, #main-nav li.attractions.active {
+  color: #998100;
+  background-color: #fffbe6;
+}
+#main-nav li.financial {
+  border-color: yellowgreen;
+}
+#main-nav li.financial::before {
+  background-image: url("/media/sprites/financial-16x16.png");
+}
+#main-nav li.financial:hover, #main-nav li.financial.active {
+  color: #5c7b1e;
+  background-color: #f5faeb;
+}
+#main-nav li.about {
+  border-color: olivedrab;
+}
+#main-nav li.about::before {
+  background-image: url("/media/sprites/about-16x16.png");
+}
+#main-nav li.about:hover, #main-nav li.about.active {
+  color: #2d3c0f;
+  background-color: #e0f0c0;
+}
+#main-nav li.careers {
+  border-color: skyblue;
+}
+#main-nav li.careers::before {
+  background-image: url("/media/sprites/career-16x16.png");
+}
+#main-nav li.careers:hover, #main-nav li.careers.active {
+  color: #30aadc;
+  background-color: #f0f9fc;
+}
+#main-nav li.events {
+  border-color: rebeccapurple;
+}
+#main-nav li.events::before {
+  background-image: url("/media/sprites/news-16x16.png");
+}
+#main-nav li.events:hover, #main-nav li.events.active {
+  color: #331a4d;
+  background-color: #e6d9f2;
+}
+
+#pages {
+  flex-grow: 1;
+}
+#pages .page {
+  padding: 1rem;
+  display: none;
+}
+#pages .page.active {
+  display: block;
+}
+#pages .page h2 {
+  font-size: 1rem;
+  margin-top: 0;
+}
+#pages .page h2::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  margin-right: 0.25em;
+  height: 1em;
+  width: 1em;
+  background-position: center center;
+}
+#pages .page#promotion h2::before {
+  background-image: url("/media/sprites/promote-16x16.png");
+}
+#pages .page#tickets h2::before {
+  background-image: url("/media/sprites/ticket-16x16.png");
+}
+#pages .page#attractions h2::before {
+  background-image: url("/media/sprites/wheel-16x16.png");
+}
+#pages .page#financial h2::before {
+  background-image: url("/media/sprites/financial-16x16.png");
+}
+#pages .page#about h2::before {
+  background-image: url("/media/sprites/about-16x16.png");
+}
+#pages .page#careers h2::before {
+  background-image: url("/media/sprites/career-16x16.png");
+}
+#pages .page#events h2::before {
+  background-image: url("/media/sprites/news-16x16.png");
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2rem 1rem;
+}
+.gallery figure {
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+.gallery figure img {
+  display: block;
+  width: 100%;
+  transition: 0.5s all;
+}
+.gallery figure figcaption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+  transition: 0.5s all;
+}
+.gallery figure figcaption::before, .gallery figure figcaption::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0.5rem;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s width;
+}
+.gallery figure figcaption::before {
+  background-color: tomato;
+  transition-delay: 0.25s;
+}
+.gallery figure figcaption::after {
+  background-color: gold;
+  transition-delay: 0s;
+}
+.gallery figure:hover img {
+  transform: scale(1.1);
+}
+.gallery figure:hover figcaption {
+  background-color: white;
+}
+.gallery figure:hover figcaption::before, .gallery figure:hover figcaption::after {
+  width: 100%;
+}
+.gallery figure:hover figcaption::before {
+  transition-delay: 0s;
+}
+.gallery figure:hover figcaption::after {
+  transition-delay: 0.25s;
+}
+
+#discount {
+  display: flex;
+}
+#discount .gem {
+  position: relative;
+  margin: 3rem auto;
+}
+#discount .gem .discount-found {
+  padding: 1rem;
+}
+#discount .gem .discount-found h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+#discount .gem .discount-found p {
+  margin-bottom: 0;
+}
+#discount .gem.state-0 {
+  height: 2px;
+  width: 2px;
+  background: black;
+}
+#discount .gem.state-0 .color {
+  display: none;
+}
+#discount .gem.state-0:hover .color {
+  display: block;
+}
+#discount .gem.state-1 {
+  height: 8px;
+  width: 8px;
+}
+#discount .gem.state-2 {
+  height: 16px;
+  width: 16px;
+}
+#discount .gem.state-3 {
+  height: auto;
+  width: 350px;
+}
+#discount .gem.state-3 .color {
+  border-radius: 4px;
+}
+#discount .gem.state-3 .color.color-8 {
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+#discount .gem .color {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#discount .gem .color.color-1 {
+  background-color: rebeccapurple;
+  left: -2px;
+  top: -2px;
+  border: 2px solid rebeccapurple;
+}
+#discount .gem .color.color-2 {
+  background-color: skyblue;
+  left: -7px;
+  top: 0;
+}
+#discount .gem .color.color-3 {
+  background-color: olivedrab;
+  left: -5px;
+  top: 5px;
+}
+#discount .gem .color.color-4 {
+  background-color: yellowgreen;
+  left: 5px;
+  top: -8px;
+}
+#discount .gem .color.color-5 {
+  background-color: gold;
+  left: 0;
+  top: 5px;
+}
+#discount .gem .color.color-6 {
+  background-color: tomato;
+  left: -8px;
+  top: -8px;
+}
+#discount .gem .color.color-7 {
+  background-color: crimson;
+  left: 3px;
+  top: 3px;
+}
+#discount .gem .color.color-8 {
+  background-color: black;
+  left: 0;
+  top: 0;
+}
+
+footer {
+  background-image: url(/media/Footer-2x.png);
+  background-size: auto 100%;
+}
+footer p {
+  text-align: center;
+  padding: 3rem 0;
+  margin: 0;
+  color: white;
+}
+
+#promotion img {
+  width: calc(100% + 2rem);
+  margin: 0 -1rem -1rem;
+  display: block;
+}
+
+#tickets .guest-counts {
+  display: flex;
+}
+#tickets .guest-counts label {
+  flex: 1 1 0;
+  margin-right: 1rem;
+}
+#tickets .guest-counts label:last-child {
+  margin-right: 0;
+}
+#tickets .tickets .ticket {
+  display: flex;
+  margin-bottom: 2rem;
+}
+#tickets .tickets .ticket:last-child {
+  margin-bottom: 0;
+}
+#tickets .tickets .ticket .details {
+  flex: 1 1 0;
+}
+#tickets .tickets .ticket .preview {
+  height: 6rem;
+  flex: 1 1 0;
+  margin-top: 1.1rem;
+  margin-left: 1rem;
+  background: #eee;
+  position: relative;
+}
+#tickets .tickets .ticket .preview .name {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  margin: 0;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+#tickets .tickets .ticket .preview.fastpass .name {
+  color: white;
+}
+#tickets .tickets .ticket .preview .parts {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+#tickets .tickets .ticket .preview .parts .start, #tickets .tickets .ticket .preview .parts .middle, #tickets .tickets .ticket .preview .parts .end {
+  flex: 0 0 0;
+  height: 100%;
+  background-size: auto 100%;
+}
+#tickets .tickets .ticket .preview .parts .middle {
+  flex-grow: 1;
+  background-repeat: round;
+}
+#tickets .tickets .ticket .preview.fastpass .parts .start {
+  background-image: url(/media/tickets/ticket-fastpass-start.png);
+  flex-basis: calc(6rem * 192 / 150);
+}
+#tickets .tickets .ticket .preview.fastpass .parts .middle {
+  background-image: url(/media/tickets/ticket-fastpass-middle.png);
+}
+#tickets .tickets .ticket .preview.fastpass .parts .end {
+  background-image: url(/media/tickets/ticket-fastpass-end.png);
+  flex-basis: calc(6rem * 278 / 150);
+}
+#tickets .tickets .ticket .preview.normal .parts .start {
+  background-image: url(/media/tickets/ticket-normal-start.png);
+  flex-basis: calc(6rem * 288 / 150);
+}
+#tickets .tickets .ticket .preview.normal .parts .middle {
+  background-image: url(/media/tickets/ticket-normal-middle.png);
+}
+#tickets .tickets .ticket .preview.normal .parts .end {
+  background-image: url(/media/tickets/ticket-normal-end.png);
+  flex-basis: calc(6rem * 22 / 150);
+}
+#tickets input[type=number], #tickets input[type=text] {
+  display: block;
+  padding: 0.8em 0.5em;
+  margin: 0 0 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 1px solid #888;
+  font-family: inherit;
+  font-size: 1rem;
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0.1em 0.2em 0.5em;
+}
+#tickets input[type=submit] {
+  width: 100%;
+  padding: 1rem;
+}
+
+#attractions .gallery figure img {
+  filter: brightness(70%) sepia(100%) grayscale(60%) hue-rotate(290deg);
+}
+#attractions .gallery figure:hover img {
+  filter: none;
+}
+
+#financial .stock {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#financial .stock .info, #financial .stock .price {
+  flex: 1 1 0;
+  padding: 0.5rem;
+  margin: auto;
+}
+#financial .stock .price {
+  font-family: monospace;
+  font-weight: 900;
+  font-size: 3rem;
+  border-left: 1px solid #ddd;
+}
+#financial .stock .info {
+  text-align: right;
+}
+#financial .stock .info p {
+  margin: 0 0 0.5rem;
+}
+#financial .stock .info p:last-child {
+  margin-bottom: 0;
+}
+#financial .download {
+  text-align: center;
+  margin: 3rem 0;
+}
+#financial .download .button {
+  display: inline-block;
+  margin: auto;
+  color: skyblue;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: 1px solid skyblue;
+  border-radius: 0.25rem;
+}
+#financial .download .button:hover {
+  color: #186c8e;
+  border-color: #186c8e;
+}
+#financial .download .button:hover .arrow .dot {
+  opacity: 1;
+  background-color: #186c8e;
+}
+#financial .download .button:hover .arrow .dot-1 {
+  top: 0em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-2 {
+  top: 0.2em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-3 {
+  top: 0.4em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-4 {
+  top: 0.6em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-5 {
+  top: 0.8em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-6 {
+  top: 1em;
+  left: 0.5em;
+}
+#financial .download .button:hover .arrow .dot-7 {
+  top: 0.8em;
+  left: 0.3em;
+}
+#financial .download .button:hover .arrow .dot-8 {
+  top: 0.8em;
+  left: 0.7em;
+}
+#financial .download .button:hover .arrow .dot-9 {
+  top: 0.6em;
+  left: 0.1em;
+}
+#financial .download .button:hover .arrow .dot-10 {
+  top: 0.6em;
+  left: 0.9em;
+}
+#financial .download .button .arrow {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+  width: 1em;
+}
+#financial .download .button .arrow .dot {
+  height: 0.1em;
+  width: 0.1em;
+  position: absolute;
+  background-color: #888;
+  transition: 0.5s all;
+  opacity: 0;
+}
+#financial .download .button .arrow .dot-1 {
+  top: 0.0670673337em;
+  left: 1.2208027561em;
+}
+#financial .download .button .arrow .dot-2 {
+  top: 0.0408644796em;
+  left: 0.2257016711em;
+}
+#financial .download .button .arrow .dot-3 {
+  top: 1.2509123719em;
+  left: 0.4459075438em;
+}
+#financial .download .button .arrow .dot-4 {
+  top: -0.2843237816em;
+  left: -0.4654933633em;
+}
+#financial .download .button .arrow .dot-5 {
+  top: 1.4043200407em;
+  left: 1.1406615887em;
+}
+#financial .download .button .arrow .dot-6 {
+  top: 0.413404623em;
+  left: -0.4322255648em;
+}
+#financial .download .button .arrow .dot-7 {
+  top: -0.4393098266em;
+  left: 1.3804121813em;
+}
+#financial .download .button .arrow .dot-8 {
+  top: -0.2126069475em;
+  left: 0.2248980951em;
+}
+#financial .download .button .arrow .dot-9 {
+  top: 0.1895647388em;
+  left: 0.5225844771em;
+}
+#financial .download .button .arrow .dot-10 {
+  top: -0.0980968525em;
+  left: 0.679106666em;
+}
+
+#about ol {
+  padding-left: 1rem;
+}
+#about ol .active {
+  text-decoration: underline;
+}
+#about .map {
+  display: flex;
+}
+#about .map svg {
+  height: 60vw;
+  width: 60vw;
+  max-width: 900px;
+  max-height: 900px;
+  margin: 0 -1.5rem -1rem auto;
+}
+#about .map .st0 {
+  fill: #DDBAA2;
+}
+#about .map .st1 {
+  fill: #CC1559;
+}
+#about .map .st2 {
+  stroke: #CC1559;
+  stroke-width: 0;
+}
+#about .map.Oslo .st2.Oslo, #about .map.Gothenburg .st2.Gothenburg, #about .map.Stockholm .st2.Stockholm {
+  animation: city 1s infinite;
+}
+
+@keyframes city {
+  from {
+    stroke-width: 0;
+    opacity: 70%;
+  }
+  to {
+    stroke-width: 13px;
+    opacity: 0;
+  }
+}
+#careers .info {
+  color: black;
+  font-weight: 600;
+}
+#careers .info a {
+  color: inherit;
+}
+#careers .info p:last-child {
+  margin-bottom: 0;
+}
+
+#events ul {
+  position: relative;
+  border-left: 2px dashed #333;
+  padding-left: 0;
+  margin-left: 2rem;
+  margin-bottom: 8rem;
+}
+#events ul::before {
+  content: "Now";
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+  background: tomato;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 4rem;
+  transform: translateX(-50%);
+}
+#events li {
+  position: relative;
+  list-style-type: none;
+  margin-left: 4rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rebeccapurple;
+  bottom: -6rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0.1rem 0.25rem 0.5rem;
+  width: max-content;
+  max-width: 100%;
+}
+#events li:first-child {
+  margin-top: -4rem;
+}
+#events li .time {
+  position: absolute;
+  display: block;
+  left: 1rem;
+  top: -1rem;
+  background: white;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(102, 51, 153, 0.2) 0.1rem 0.25rem 0.5rem;
+}
+#events li a {
+  color: #1f8dba;
+  text-decoration: none;
+}
+#events li h3 {
+  margin: 0.75em 0;
+}
+#events li::before {
+  content: "";
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  border-bottom-left-radius: 4rem;
+  border-left: 2px dashed rebeccapurple;
+  border-bottom: 2px dashed rebeccapurple;
+  left: calc(-4rem - 3px);
+  top: -1rem;
+}
+
+/*# sourceMappingURL=main.css.map */

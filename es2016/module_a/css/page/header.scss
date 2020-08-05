@@ -1,0 +1,40 @@
+#header {
+  border-bottom: 2px solid transparent;
+  border-image: url(/media/sprites/rainbow.png) 2;
+
+  nav {
+    background: black;
+    color: white;
+
+    ul {
+      max-width: 900px;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        border-left: 1px dotted #ccc;
+        border-right: 1px dotted #ccc;
+        padding: 0.7rem;
+
+        &.active {
+          background: #333;
+        }
+      }
+    }
+  }
+
+  #hero {
+    display: flex;
+    background-image: url(/media/photos/photo-1464059728276-d877187d61a9.jpeg);
+    background-size: cover;
+    background-position: 50% 20%;
+    padding-bottom: 10rem;
+
+    h1 {
+      font-size: 200%;
+      margin: 2em auto;
+      padding: 1em 0.5em;
+      background-color: rgba(white, 90%);
+    }
+  }
+}

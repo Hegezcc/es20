@@ -1,0 +1,119 @@
+#tickets {
+  .guest-counts {
+    display: flex;
+
+    label {
+      flex: 1 1 0;
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .tickets {
+    .ticket {
+      display: flex;
+      margin-bottom: 2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .details {
+        flex: 1 1 0;
+        label {
+        }
+      }
+
+      .preview {
+        height: 6rem;
+        flex: 1 1 0;
+        margin-top: 1.1rem;
+        margin-left: 1rem;
+        background: #eee;
+        position: relative;
+
+        .name {
+          position: absolute;
+          bottom: 1rem;
+          left: 1rem;
+          margin: 0;
+          font-weight: 800;
+          font-size: 1.2rem;
+        }
+
+        &.fastpass .name {
+          color: white;
+        }
+
+        .parts {
+          position: absolute;
+          display: flex;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+
+          .start, .middle, .end {
+            flex: 0 0 0;
+            height: 100%;
+            background-size: auto 100%;
+          }
+
+          .middle {
+            flex-grow: 1;
+            background-repeat: round;
+          }
+        }
+
+        &.fastpass .parts {
+          .start {
+            background-image: url(/media/tickets/ticket-fastpass-start.png);
+            flex-basis: calc(6rem * 192 / 150);
+          }
+          .middle {
+            background-image: url(/media/tickets/ticket-fastpass-middle.png);
+          }
+          .end {
+            background-image: url(/media/tickets/ticket-fastpass-end.png);
+            flex-basis: calc(6rem * 278 / 150);
+          }
+        }
+
+        &.normal .parts {
+          .start {
+            background-image: url(/media/tickets/ticket-normal-start.png);
+            flex-basis: calc(6rem * 288 / 150);
+          }
+          .middle {
+            background-image: url(/media/tickets/ticket-normal-middle.png);
+          }
+          .end {
+            background-image: url(/media/tickets/ticket-normal-end.png);
+            flex-basis: calc(6rem * 22 / 150);
+          }
+        }
+      }
+    }
+  }
+
+  input[type="number"], input[type="text"] {
+    display: block;
+    padding: 0.8em 0.5em;
+    margin: 0 0 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid #888;
+    font-family: inherit;
+    font-size: 1rem;
+    box-shadow: inset rgba(black, 10%) 0.1em 0.2em 0.5em;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+  }
+}

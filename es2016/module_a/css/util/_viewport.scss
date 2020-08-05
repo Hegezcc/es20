@@ -1,0 +1,84 @@
+
+.phone {
+  display: none;
+}
+.tablet {
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .phone {
+    display: block;
+  }
+
+  .tablet {
+    display: none;
+  }
+  #main-nav {
+    display: none;
+  }
+
+  #pages .page {
+    display: block !important;
+    padding: 2rem 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: auto !important;
+    grid-gap: 0 !important;
+  }
+
+  #tickets .ticket {
+    flex-direction: column !important;
+
+    .preview {
+      flex-basis: 6rem !important;
+      margin-left: 0 !important;
+    }
+  }
+
+  #about .map svg {
+    height: 100vw !important;
+    width: 100vw !important;
+  }
+
+  #financial .stock {
+    flex-direction: column !important;
+    text-align: center !important;
+
+    .price {
+      border-bottom: 1px solid #ddd !important;
+      border-left: none !important;
+    }
+  }
+}
+
+@media (max-width: 899px) {
+
+  main {
+    flex-direction: row !important;
+  }
+
+  #main-nav {
+    ul {
+      flex-direction: column;
+
+      li {
+        border-bottom-width: 0 !important;
+        padding-bottom: 0.5rem !important;
+        border-right-width: 0.25rem !important;
+        padding-right: 1rem !important;
+      }
+
+      li:hover, li.active {
+        border-right-width: 0.5rem !important;
+        padding-right: 0.75rem !important;
+      }
+    }
+  }
+
+  #about .map svg {
+    height: 540px !important;
+    width: 540px !important;
+  }
+}

@@ -1,0 +1,9 @@
+#attractions .gallery figure {
+  img {
+    filter: brightness(70%) sepia(100%) grayscale(60%) hue-rotate(290deg);
+  }
+
+  &:hover img {
+    filter: none;
+  }
+}

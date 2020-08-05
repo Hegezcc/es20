@@ -1,123 +1,117 @@
-Vue.component('vticket', {
+Vue.component('v-ticket', {
     template: `
-<div class="ticket-container">
-    <div class="inputs">
-        <label class="name" :for="'name-' + i.type + i.id">
-            <span>{{ i.type }} {{ i.id }}</span>
-            <input type="text" v-model="i.name" :id="'name-' + i.type + i.id" placeholder="Name">
+<div class="ticket">
+    <input type="hidden" :name="'ticket[' + i.id + '][type]'" :value="i.type">
+    <div class="details">
+        <label :for="'ticket-name-' + i.id">
+            <span>{{ i.type }} {{ i.position }}</span>
+            <input type="text" :name="'ticket[' + i.id + '][name]'" v-model="i.name" :id="'ticket-name-' + i.id">
         </label>
-        <label class="fastpass" :for="'fastpass-' + i.type + i.id">
-            <input type="checkbox" :id="'fastpass-' + i.type + i.id" v-model="i.fastpass" @click="$emit('fastpass')">
-            <span> + Fast Pass >></span>
+        <label :for="'ticket-fastpass-' + i.id">
+            <input @input="$emit('fastpass')" type="checkbox" :name="'ticket[' + i.id + '][fastpass]'" v-model="i.fastpass" :id="'ticket-fastpass-' + i.id">
+            <span>+ Fast Pass >></span>
         </label>
     </div>
-    <div class="ticket" :class="{ fastpass: i.fastpass }">
-        <div class="start"></div>
-        <div class="middle"></div>
-        <div class="end"></div>
-        <p>{{ i.name }}</p>
+    <div class="preview" :class="[ i.fastpass ? 'fastpass' : 'normal' ]">
+        <div class="parts">
+            <div class="start"></div>
+            <div class="middle"></div>
+            <div class="end"></div>
+        </div>
+        <p class="name">{{ i.name }}</p>
     </div>
 </div>`,
     props: ['i'],
     data() {return {
-    }}
+
+    }},
+    mounted() {
+    }
 })
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
     data: {
-        currentTab: 'tickets',
-        ticketCounts: {
-            Child: 2,
-            Adult: 1,
+        active: 'tickets',
+        stock: {
+            time: '???',
+            price: '???',
+        },
+        city: null,
+        careers: [],
+        guestTypes: {
+            Adult: 2,
+            Children: 1,
             Senior: 0,
         },
         tickets: {
-            Child: [{id: 1, name: '', fastpass: false, type: 'Child'}, {id: 2, name: '', fastpass: false, type: 'Child'}],
-            Adult: [{id: 1, name: '', fastpass: false, type: 'Adult'}],
+            Adult: [],
+            Children: [],
             Senior: [],
         },
-        stockValue: 'loading...',
-        activeCity: null,
-        careers: [],
-        gemState: 0,
-        discount: null,
-        fastpassState: 0,
+        currentId: 1,
+        fastpassCount: 0,
+        code: null,
+        codeStorageKey: 'es2016-third-run-code',
+        discountState: 0,
     },
-    created() {
-        this.discount = localStorage.getItem('funny-island-discount');
+    mounted() {
+        this.updateTickets();
+        this.getCareers();
+        this.checkStock();
 
-        if (this.discount) {
-            this.gemState = 3;
+        const code = localStorage.getItem(this.codeStorageKey);
+
+        if (code !== null) {
+            this.code = code;
+            this.discountState = 3;
         }
 
-        this.updateStock();
-        setInterval(this.updateStock, 5000);
-
-        fetch('/career.php').then(d => d.json()).then(d => this.careers = d);
+        setInterval(this.checkStock, 15000);
     },
     methods: {
-        async updateStock() {
-            this.stockValue = await fetch('/stock.php').then(d => d.text())
+        checkStock() {
+            fetch('/stock.php').then(d => d.json()).then(d => Object.assign(this.stock, d));
         },
-        cityHover(name) {
-            this.activeCity = name;
+        getCareers() {
+            fetch('/career.php').then(d => d.json()).then(d => this.careers = d);
         },
-        resetHover() {
-            this.activeCity = null;
-        },
-        gemClick() {
-            if (this.gemState < 3) {
-                this.gemState++;
-
-                if (this.gemState === 3) {
-                    // Create discount
-                    const randoms = '1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
-                    let str = '';
-
-                    for (let i = 0; i < 4; i++) {
-                        str += randoms[Math.floor(Math.random() * randoms.length)];
+        updateTickets() {
+            for (let type in this.guestTypes) {
+                while (this.guestTypes[type] !== this.tickets[type].length) {
+                    if (this.guestTypes[type] < this.tickets[type].length) {
+                        this.tickets[type].pop();
+                    } else {
+                        this.tickets[type].push({
+                            id: this.nextId(),
+                            position: this.tickets[type].length + 1,
+                            name: '',
+                            fastpass: this.globalFastpass,
+                            type,
+                        });
                     }
-
-                    this.discount = str;
-
-                    localStorage.setItem('funny-island-discount', str);
                 }
             }
         },
-        checkout() {
-            fetch('form-handler.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(this.tickets),
-            }).then(() => document.location = 'form-handler.php');
+        nextId() {
+            return this.currentId++;
         },
-        checkFastpass() {
-            this.fastpassState++;
+        discountClick() {
+            if (this.discountState < 3) {
+                this.discountState++;
 
-            if (this.globalFastpass) {
-                this.showTickets.forEach(t => t.fastpass = true);
-            }
-        }
-    },
-    watch: {
-        ticketCounts: {
-            deep: true,
-            handler(val) {
-                for (let key in val) {
-                    const tickets = this.tickets[key];
-                    while (val[key] !== tickets.length) {
-                        if (val[key] < tickets.length) {
-                            tickets.pop();
-                        } else {
-                            tickets.push({
-                                id: tickets.length+1,
-                                name: '',
-                                type: key,
-                                fastpass: this.globalFastpass
-                            });
-                        }
+                if (this.discountState === 3) {
+                    // Calculate and persist code
+                    const alphabet = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
+                    let code = '';
+
+                    for (let i=0; i<4; i++) {
+                        code += alphabet[Math.floor(Math.random()*alphabet.length)];
                     }
+
+                    this.code = code;
+
+                    localStorage.setItem(this.codeStorageKey, code);
                 }
             }
         }
@@ -126,16 +120,29 @@ const app = new Vue({
         showTickets() {
             const arr = [];
 
-            for (let i in this.tickets) {
-                for (let ticket of this.tickets[i]) {
-                    arr.push(ticket);
-                }
+            for (let type in this.tickets) {
+                for (let ticket of this.tickets[type]) arr.push(ticket);
             }
 
             return arr;
         },
         globalFastpass() {
-            return this.fastpassState === 1;
+            return this.fastpassCount === 1;
+        }
+    },
+    watch: {
+        guestTypes: {
+            deep: true,
+            handler() {
+                this.updateTickets();
+            }
+        },
+        globalFastpass(val) {
+            if (val) {
+                for (let type in this.tickets) {
+                    this.tickets[type].forEach(t => t.fastpass = true);
+                }
+            }
         }
     }
-})
+});

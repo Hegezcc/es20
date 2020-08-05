@@ -1,0 +1,14 @@
+#careers {
+  .info {
+    color: black;
+    font-weight: 600;
+
+    a {
+      color: inherit;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

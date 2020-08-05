@@ -1,0 +1,77 @@
+#discount {
+  display: flex;
+
+  .gem {
+    position: relative;
+    margin: 3rem auto;
+
+    .discount-found {
+      padding: 1rem;
+
+      h2 {
+        margin-top: 0;
+        font-size: 1rem;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    &.state-0 {
+      height: 2px;
+      width: 2px;
+      background: black;
+
+      .color {
+        display: none;
+      }
+
+      &:hover {
+        .color {
+          display: block;
+        }
+      }
+    }
+
+    &.state-1 {
+      height: 8px;
+      width: 8px;
+    }
+
+    &.state-2 {
+      height: 16px;
+      width: 16px;
+    }
+
+    &.state-3 {
+      height: auto;
+      width: 350px;
+
+      .color {
+        border-radius: 4px;
+
+        &.color-8 {
+          background-color: rgba(white, 80%);
+          position: relative;
+        }
+      }
+    }
+
+    .color {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      &.color-1 {background-color: $rebeccapurple; left: -2px; top: -2px; border: 2px solid $rebeccapurple}
+      &.color-2 {background-color: $skyblue; left: -7px; top: 0}
+      &.color-3 {background-color: $olivedrab; left: -5px; top: 5px}
+      &.color-4 {background-color: $yellowgreen; left: 5px; top: -8px}
+      &.color-5 {background-color: $gold; left: 0; top: 5px}
+      &.color-6 {background-color: $tomato; left: -8px; top: -8px}
+      &.color-7 {background-color: $crimson; left: 3px; top: 3px}
+      &.color-8 {background-color: black; left: 0; top: 0}
+
+    }
+  }
+}

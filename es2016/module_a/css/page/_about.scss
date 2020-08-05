@@ -1,0 +1,43 @@
+#about {
+  ol {
+    padding-left: 1rem;
+
+    .active {
+      text-decoration: underline;
+    }
+  }
+
+  .map {
+    display: flex;
+
+    svg {
+      height: 60vw;
+      width: 60vw;
+      max-width: 900px;
+      max-height: 900px;
+      margin: 0 -1.5rem -1rem auto;
+    }
+
+    .st0 {
+      fill: #DDBAA2;
+    }
+
+    .st1 {
+      fill: #CC1559;
+    }
+
+    .st2 {
+      stroke: #CC1559;
+      stroke-width: 0;
+    }
+
+    &.Oslo .st2.Oslo, &.Gothenburg .st2.Gothenburg, &.Stockholm .st2.Stockholm {
+      animation: city 1s infinite;
+    }
+  }
+}
+
+@keyframes city {
+  from {stroke-width: 0; opacity: 70%;}
+  to {stroke-width: 13px; opacity: 0;}
+}

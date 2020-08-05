@@ -1,0 +1,18 @@
+$crimson: crimson;
+$tomato: tomato;
+$gold: gold;
+$yellowgreen: yellowgreen;
+$olivedrab: olivedrab;
+$skyblue: skyblue;
+$rebeccapurple: rebeccapurple;
+
+$pages: ("promotion": $crimson,
+        "tickets": $tomato,
+        "attractions": $gold,
+        "financial": $yellowgreen,
+        "about": $olivedrab,
+        "careers": $skyblue,
+        "events": $rebeccapurple);
+
+$lightens: ("promotion": 50%, "tickets": 32%, "attractions": 45%, "financial": 45%, "about": 50%, "careers": 24%, "events": 50%);
+$sprites: ("promotion": "promote", "tickets": "ticket", "attractions": "wheel", "financial": "financial", "about": "about", "careers": "career", "events": "news");
