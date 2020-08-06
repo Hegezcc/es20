@@ -1,0 +1,128 @@
+.column-login {
+    max-width: 450px;
+}
+
+.login > .grid {
+    height: 100%;
+}
+
+.ui.footer.segment {
+    margin: 5em 0 0;
+}
+
+.ui.menu {
+    z-index: 1;
+    position: relative;
+}
+
+.ui.button.remove-question {
+    margin-top: 1.6em;
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    margin-top: -10px;
+    height: 400px;
+    background: #d6d6d6;
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.banner > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    animation: banner 30s infinite;
+}
+
+.banner > div::after {
+    content: "ITTECHSurveys";
+    position: absolute;
+    right: 2rem;
+    bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.banner .register {
+    background-image: url('/assets/img/register.jpg');
+    animation-delay: 0s;
+}
+
+.banner .collect {
+    background-image: url('/assets/img/collect.jpg');
+    animation-delay: 10s;
+}
+
+.banner .results {
+    background-image: url('/assets/img/results.jpg');
+    animation-delay: 20s;
+}
+
+.banner p {
+    padding: 1em;
+    margin: auto;
+    font-size: 2em;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* /Banner */
+
+.item .image img {
+    max-width: 100%;
+}
+
+.ui.button.new-survey, .ui.button.new-question {
+    margin-left: 10px;
+}
+
+.ui.cards>.card.card-employees {
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+.ui.cards>.card.card-employees .header {
+    margin-bottom: 0.5em;
+}
+
+.ui.menu .item>img :not(.ui) {
+    width: 5em;
+}
+
+/* Preview image */
+#preview {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-size: 1.5em;
+    display: flex;
+    margin: 0.5em 0;
+}
+
+#preview p {
+    margin: auto;
+}
+
+@media print {
+    .footer, .button, .image, .main.menu, .four.wide.column {
+        display: none !important;
+    }
+}
+
+@keyframes banner {
+    0% {left: 0; z-index: 1; background-position-y: bottom;}
+    35% {left: 0; z-index: 2; }
+    40% {left: 100%; z-index: 2;background-position-y: top;}
+    100% {left: 100%; z-index: 1;}
+}
