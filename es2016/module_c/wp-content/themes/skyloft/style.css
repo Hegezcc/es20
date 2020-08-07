@@ -1,0 +1,76 @@
+/*
+Theme Name: Skyloft
+Template: wp-bootstrap-starter
+Version: 1.0.0
+Text Domain: skyloft
+*/
+
+#page-sub-header {
+    background-position: center !important;
+    display: flex;
+    padding: 0 !important;
+    background-color: white;
+    height: 400px;
+}
+
+#page-sub-header .container {
+    margin: auto;
+}
+
+#page-sub-header h1, #page-sub-header p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+#masthead {
+    background-color: #005ca8 !important;
+}
+
+#masthead .navbar-brand {
+    margin: -0.75rem 1rem;
+}
+
+#masthead .navbar-brand img {
+    height: 5rem;
+}
+
+#masthead .navbar-nav > li > a {
+    color: white !important;
+}
+
+#masthead .navbar-nav > li > a:hover {
+    text-decoration: underline;
+}
+
+#masthead .navbar-nav > li > a:visited {
+    color: #cecccc !important;
+}
+
+#colophon {
+    background-color: transparent !important;
+}
+
+#content, #colophon {
+    color: #000 !important;
+}
+
+#content a, #colophon a {
+    color: #005ca8 !important;
+}
+
+.wp-block-media-text .wp-block-media-text__content {
+    padding-left: 0;
+    padding-right: 16%;
+}
+
+.wpcf7-form label {
+    width:100% !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.page-id-60 .entry-title {
+    text-align: center;
+}
